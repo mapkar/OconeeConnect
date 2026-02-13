@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OconeeConnect - Connection Instructions</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; }
+        header { background: #2c3e50; color: white; text-align: center; padding: 2rem 1rem; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        h1, h2 { color: #2c3e50; }
+        section { margin-bottom: 3rem; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        ol, ul { padding-left: 1.5rem; }
+        .highlight { background: #e8f4fd; padding: 1rem; border-left: 5px solid #3498db; margin: 1rem 0; }
+        footer { text-align: center; padding: 1rem; background: #2c3e50; color: white; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>OconeeConnect Connection Instructions</h1>
+    <p>Join the local mesh network in the Oconee/Charlotte area—easy setup with default settings!</p>
+</header>
+
+<div class="container">
+
+    <section>
+        <h2>Quick Overview</h2>
+        <p>OconeeConnect uses Meshtastic's default settings for simplicity: the primary channel is "LongFast" with default encryption. This means your device can connect out-of-the-box without custom configs. Just get in range of other nodes, and you're part of the mesh!</p>
+        <div class="highlight">
+            <strong>Default Settings We're Using:</strong>
+            <ul>
+                <li><strong>Channel:</strong> Primary (Channel 0), named "LongFast".</li>
+                <li><strong>Preset:</strong> Long Fast (good balance of range and speed—up to several miles line-of-sight).</li>
+                <li><strong>Encryption:</strong> Default PSK ("AQ==")—it's basic encryption with a public key, so anyone on defaults can join. (For private chats, use secondary channels or DMs.)</li>
+                <li><strong>Region:</strong> US (915 MHz band)—auto-detected based on your location.</li>
+            </ul>
+        </div>
+        <p>If you're new, expect to send/receive text messages and share locations off-grid. Great for local events, emergencies, or just testing in Charlotte!</p>
+    </section>
+
+    <section>
+        <h2>Step-by-Step Setup</h2>
+        <ol>
+            <li><strong>Get Hardware:</strong> Buy a Meshtastic-compatible LoRa device (e.g., Heltec V3, LilyGO T-Beam, RAK WisBlock—$20–$50 on Amazon, AliExpress, or stores like Rokland). Many come pre-flashed with Meshtastic.</li>
+            <li><strong>Install Firmware (if needed):</strong>
+                <ul>
+                    <li>Go to <a href="https://flasher.meshtastic.org">flasher.meshtastic.org</a> in a web browser (Chrome/Edge).</li>
+                    <li>Connect your device via USB.</li>
+                    <li>Select your device model, choose the latest firmware (defaults are fine
