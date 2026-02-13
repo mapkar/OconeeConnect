@@ -19,7 +19,7 @@
 
 <header>
     <h1>OconeeConnect Connection Instructions</h1>
-    <p>Join the local mesh network in the Oconee/Charlotte area—easy setup with default settings!</p>
+    <p>Join the local mesh network in Oconee County, SC—easy setup with default settings!</p>
 </header>
 
 <div class="container">
@@ -36,7 +36,7 @@
                 <li><strong>Region:</strong> US (915 MHz band)—auto-detected based on your location.</li>
             </ul>
         </div>
-        <p>If you're new, expect to send/receive text messages and share locations off-grid. Great for local events, emergencies, or just testing in Charlotte!</p>
+        <p>It's great for off-grid texting and location sharing in Oconee County's towns, lakes, mountains, and rural areas.</p>
     </section>
 
     <section>
@@ -47,4 +47,60 @@
                 <ul>
                     <li>Go to <a href="https://flasher.meshtastic.org">flasher.meshtastic.org</a> in a web browser (Chrome/Edge).</li>
                     <li>Connect your device via USB.</li>
-                    <li>Select your device model, choose the latest firmware (defaults are fine
+                    <li>Select your device model, choose the latest firmware (defaults are fine), and flash it.</li>
+                </ul>
+            </li>
+            <li><strong>Download the App:</strong>
+                <ul>
+                    <li>Android: Search "Meshtastic" on Google Play.</li>
+                    <li>iOS: Search "Meshtastic" on App Store.</li>
+                    <li>Web/Desktop: Use <a href="https://client.meshtastic.org">client.meshtastic.org</a>.</li>
+                </ul>
+            </li>
+            <li><strong>Pair Your Device:</strong>
+                <ul>
+                    <li>Turn on your LoRa device (it should boot into Meshtastic mode).</li>
+                    <li>Open the app, enable Bluetooth, and scan for devices.</li>
+                    <li>Select your device—it'll connect automatically.</li>
+                </ul>
+            </li>
+            <li><strong>Connect to the Mesh:</strong>
+                <ul>
+                    <li>No changes needed! Your device is already on the default "LongFast" channel.</li>
+                    <li>Go to the app's "Mesh" or "Channels" tab—you should see nearby nodes if any are active.</li>
+                    <li>Send a test message to "All" or a specific node ID.</li>
+                </ul>
+            </li>
+            <li><strong>Join OconeeConnect Locally:</strong>
+                <ul>
+                    <li>Get in range of an existing node in Oconee County, SC (we're building coverage in key areas—check our repo for node locations or updates).</li>
+                    <li>Key coverage targets include: Seneca, Walhalla, Westminster, Salem, West Union, Long Creek, Mountain Rest, Tamassee, Fair Play, Keowee Key, and surrounding lake/mountain communities.</li>
+                    <li>If you see nodes but no connection, double-check your region is set to "US" in Device Settings > LoRa (it auto-sets usually).</li>
+                    <li>Troubleshoot: Restart device/app, ensure antenna is attached, and try outdoors/elevated spots for better range (especially useful in the foothills and near Lakes Keowee/Hartwell).</li>
+                </ul>
+            </li>
+        </ol>
+        <p>That's it! Your messages will hop through the mesh automatically. For advanced tips, like adding solar-powered nodes or private channels, see the Meshtastic docs at <a href="https://meshtastic.org">meshtastic.org</a>.</p>
+    </section>
+
+    <section>
+        <h2>Tips & Safety</h2>
+        <ul>
+            <li>Range varies: 1–5 miles in towns/lakeside, 10+ miles in open/rural mountain areas.</li>
+            <li>Battery life: Days on default settings—use power-saving modes for longer (great for hiking in Sumter National Forest).</li>
+            <li>Legal: No license needed in US for LoRa on ISM bands, but keep power low.</li>
+            <li>Privacy: Defaults are public—use DMs for sensitive info.</li>
+            <li>Contribute: Set up a node in your area (e.g., Seneca, Walhalla, or a lakeside spot) and share your location on our GitHub issues!</li>
+        </ul>
+    </section>
+
+    <p><a href="/">Back to Home</a></p>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Oconee Connect | Powered by GitHub Pages</p>
+</footer>
+
+</body>
+</html>
