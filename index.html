@@ -103,7 +103,6 @@
     "Full site and mesh access coming soon",
     "----------------------------------------------------",
     "",
-    "",
     "Check Complete.",
     "web@OconeeConnect:~$ "
   ];
@@ -113,13 +112,12 @@
   let charIndex = 0;
   let currentText = "";
 
-  function typeChar() {
-    if (lineIndex >= lines.length) {
-      // Finished – add final blinking cursor
-      output.innerHTML += '<span class="cursor blink-slow"></span>';
-      output.scrollTop = output.scrollHeight;
-      return;
-    }
+  if (lineIndex >= lines.length) {
+  // Finished – append cursor right after the last prompt text
+  output.innerHTML += '<span class="cursor blink-slow"></span>';
+  output.scrollTop = output.scrollHeight;
+  return;
+}
 
     const line = lines[lineIndex];
 
@@ -131,7 +129,7 @@
       setTimeout(typeChar, 5 + Math.random() * 12);
     } else {
       // End of line → add newline and move to next
-      //currentText += "\n";
+      currentText += "\n";
       output.textContent = currentText;
       charIndex = 0;
       lineIndex++;
