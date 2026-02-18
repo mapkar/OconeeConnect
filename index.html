@@ -15,22 +15,20 @@
       color: #00ff9f;
       font-family: 'Courier New', Courier, monospace;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      padding: 2rem;
       overflow: hidden;
     }
     .terminal {
-      width: 90%;
-      max-width: 960px;
-      height: 80vh;
+      width: 100%;
+      max-width: 1000px;
+      height: 100%;
       background: #000;
       border: 1px solid #003300;
       border-radius: 6px;
       box-shadow: 
         inset 0 0 60px rgba(0, 255, 159, 0.08),
         0 0 40px rgba(0, 255, 159, 0.15);
-      padding: 1.5rem 2rem;
+      padding: 1.5rem;
       overflow: hidden;
       position: relative;
     }
@@ -41,44 +39,34 @@
       background: repeating-linear-gradient(
         transparent 0px,
         transparent 2px,
-        rgba(0, 255, 159, 0.06) 2px,
-        rgba(0, 255, 159, 0.06) 4px
+        rgba(0, 255, 159, 0.05) 2px,
+        rgba(0, 255, 159, 0.05) 4px
       );
       pointer-events: none;
       z-index: 1;
     }
     .output {
       font-size: 1.05rem;
-      line-height: 1.45;
+      line-height: 1.5;
       white-space: pre-wrap;
-      height: calc(100% - 3rem);
+      height: 100%;
       overflow-y: auto;
       padding-right: 1rem;
     }
-    .prompt {
-      display: flex;
-      align-items: center;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-    }
-    .user {
-      color: #00ff9f;
-      margin-right: 0.5rem;
-    }
     .cursor {
       display: inline-block;
-      width: 10px;
+      width: 9px;
       height: 1.2em;
       background: #00ff9f;
-      animation: blink 1.1s step-end infinite;
+      animation: blink 1s step-end infinite;
       vertical-align: middle;
-      margin-left: 4px;
+      margin-left: 3px;
     }
     @keyframes blink {
       50% { opacity: 0; }
     }
     .blink-slow {
-      animation: blink 2s step-end infinite;
+      animation: blink 1.8s step-end infinite;
     }
   </style>
 </head>
@@ -86,10 +74,6 @@
 
 <div class="terminal">
   <div class="output" id="output"></div>
-  <div class="prompt">
-    <span class="user">OconeeConnect$</span>
-    <span class="cursor blink-slow"></span>
-  </div>
 </div>
 
 <script>
@@ -97,61 +81,67 @@
     "[BOOT] OconeeConnect v0.1 – Community Mesh Node",
     "      Upstate SC – Seneca / Walhalla / Lake Keowee",
     "",
-    "[INFO] Loading kernel.................................. OK",
-    "[INFO] Initializing LoRa radio (915 MHz).............. OK",
-    "[INFO] AES-256 channel encryption module.............. OK",
-    "[INFO] Scanning for nearby nodes....................... PENDING",
-    "[INFO] GPS module calibration......................... OK",
-    "[INFO] Solar charge controller interface.............. OK",
-    "[INFO] Mesh routing table.................................. OK",
+    "[INFO] Loading kernel........ OK",
+    "[INFO] LoRa radio (915 MHz).. OK",
+    "[INFO] Encryption module..... OK",
+    "[INFO] Scanning nodes........ PENDING",
+    "[INFO] GPS calibration....... OK",
+    "[INFO] Solar interface....... OK",
+    "[INFO] Mesh routing.......... OK",
     "",
-    "[STATUS] Connecting to Oconee County mesh network",
-    "         → Looking for relay nodes on high ground",
-    "         → Checking coverage: Seneca → Walhalla",
+    "[STATUS] Connecting to Oconee mesh",
+    "         → Scanning high-ground relays",
+    "         → Checking Seneca → Walhalla path",
     "",
-    "[WARN] No uplink detected – operating in local-only mode",
-    "       This is expected during initial deployment.",
+    "[WARN] No uplink – local-only mode active",
+    "       Normal during initial rollout.",
     "",
-    "----------------------------------------------------------",
-    "       OconeeConnect is currently in PENDING state",
-    "       Site content and full mesh access coming soon",
-    "       Thank you for your patience – 73 de @0k_sashes",
-    "----------------------------------------------------------",
+    "----------------------------------------------------",
+    "       OconeeConnect is currently PENDING",
+    "       Full site and mesh access coming soon",
+    "       73 de @0k_sashes",
+    "----------------------------------------------------",
     "",
-    "OconeeConnect$ _"
+    "OconeeConnect$ "
   ];
 
   const output = document.getElementById('output');
-  let i = 0;
+  let lineIndex = 0;
   let charIndex = 0;
-  let currentLine = "";
+  let currentText = "";
 
-  function typeNextChar() {
-    if (i >= lines.length) return;
-
-    const line = lines[i];
-
-    if (charIndex < line.length) {
-      currentLine += line[charIndex];
-      output.textContent = currentLine;
-      charIndex++;
-      setTimeout(typeNextChar, 35 + Math.random() * 30); // human-like typing speed variation
-    } else {
-      // Finished line → add newline and move to next
-      output.textContent += "\n";
-      currentLine = "";
-      charIndex = 0;
-      i++;
-      // Slight pause between lines
-      setTimeout(typeNextChar, i === lines.length - 1 ? 1800 : 400 + Math.random() * 300);
+  function typeChar() {
+    if (lineIndex >= lines.length) {
+      // Finished – add final blinking cursor
+      output.innerHTML += '<span class="cursor blink-slow"></span>';
+      output.scrollTop = output.scrollHeight;
+      return;
     }
 
-    // Auto-scroll to bottom
+    const line = lines[lineIndex];
+
+    if (charIndex < line.length) {
+      currentText += line[charIndex];
+      output.textContent = currentText;
+      charIndex++;
+      // Faster typing: 15–40 ms per char
+      setTimeout(typeChar, 15 + Math.random() * 25);
+    } else {
+      // End of line → add newline and move to next
+      currentText += "\n";
+      output.textContent = currentText;
+      charIndex = 0;
+      lineIndex++;
+      // Shorter pause between lines (faster overall feel)
+      setTimeout(typeChar, lineIndex === lines.length - 1 ? 1200 : 200 + Math.random() * 200);
+    }
+
+    // Auto-scroll
     output.scrollTop = output.scrollHeight;
   }
 
-  // Start typing after a short delay
-  setTimeout(typeNextChar, 800);
+  // Start after brief delay
+  setTimeout(typeChar, 600);
 </script>
 
 </body>
