@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OconeeConnect – Initializing</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f5f5f0;                /* soft vintage paper/off-white */
+      color: #111111;                     /* near-black text */
+      font-family: 'Courier New', Courier, monospace;
+      height: 100vh;
+      padding: 2rem;
+      overflow: hidden;
+    }
+    .terminal {
+      width: 100%;
+      max-width: 1000px;
+      height: 100%;
+      background: #fdfdf7;                /* very light cream */
+      border: 2px solid #888;             /* subtle gray border */
+      border-radius: 8px;
+      box-shadow: 
+        inset 0 0 80px rgba(0,0,0,0.04),
+        0 8px 30px rgba(0,0,0,0.12),
+        inset 0 0 12px rgba(0, 128, 0, 0.06);  /* faint green phosphor glow */
+      padding: 1.8rem 2rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .terminal::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    .output {
+      font-size: 1.1rem;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 1rem;
+      color: #0a0a0a;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.25em;
+      background: #00cc66;                /* classic phosphor green */
+      animation: blink 1.1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 4px;
+      box-shadow: 0 0 8px #00cc66;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    .blink-slow {
+      animation: blink 1.8s step-end infinite;
+    }
+  </style>
+</head>
+<body>
+
+<div class="terminal">
+  <div class="output" id="output"></div>
+</div>
+
+<script>
+  // Helper to get current EST time formatted nicely
+  function getCurrentEST() {
+    const now = new Date();
+    const estFormatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+    const parts = estFormatter.formatToParts(now);
+    const date = `${parts.find(p => p.type === 'year').value}-${parts.find(p => p.type === 'month').value}-${parts.find(p => p.type === 'day').value}`;
+    const time = `${parts.find(p => p.type === 'hour').value}:${parts.find(p => p.type === 'minute').value}:${parts.find(p => p.type === 'second').value} ${parts.find(p => p.type === 'dayPeriod').value} EST`;
+    return `CURRENT DATE & TIME: ${date} ${time}`;
+  }
+
+  const lines = [
+    "web@OconeeConnect:~$ ./MeshNetStatus.sh",
+    "",
+    "[BOOT] OconeeConnect v0.1 – Community Mesh",
+    "[Function] Requesting Status",
+    getCurrentEST(),
+    "",
+    "[INFO] Loading kernel........ OK",
+    "[INFO] LoRa radio (915 MHz).. OK",
+    "[INFO] Encryption module..... OK",
+    "[INFO] Scanning nodes........ OK",
+    "[INFO] GPS calibration....... OK",
+    "[INFO] Solar interface....... OK",
+    "[INFO] Mesh routing.......... ERROR",
+    "",
+    "[STATUS] Connecting to Oconee mesh",
+    "  → Checking SEN29672a - PENDING",
+    "  → Checking WAL29691a - PENDING",
+    "  → Checking MTR29664a - PENDING",
+    "  → Checking SLM29676a - PENDING",
+    "  → Checking WSM29693a - PENDING",
+    "  → Checking ALBTS-HUB  - ONLINE",
+    "  → Checking TCCBBS.    - OFFLINE",
+    "",
+    "[WARN] No uplink – local-only mode active",
+    "Normal during initial rollout.",
+    "",
+    "----------------------------------------------------",
+    "OconeeConnect is currently PENDING",
+    "Full site and mesh access coming soon",
+    "----------------------------------------------------",
+    "",
+    "Check Complete.",
+    "web@OconeeConnect:~$ "
+  ];
+
+  const output = document.getElementById('output');
+  let lineIndex = 0;
+  let charIndex = 0;
+  let currentText = "";
+
+  function typeChar() {
+    if (lineIndex >= lines.length) {
+      output.innerHTML += '<span class="cursor blink-slow"></span>';
+      output.scrollTop = output.scrollHeight;
+      return;
+    }
+
+    const line = lines[lineIndex];
+
+    if (charIndex < line.length) {
+      currentText += line[charIndex];
+      output.textContent = currentText;
+      charIndex++;
+      setTimeout(typeChar, 5 + Math.random() * 3);
+    } else {
+      if (lineIndex < lines.length - 1) {
+        currentText += "\n";
+      }
+      output.textContent = currentText;
+      charIndex = 0;
+      lineIndex++;
+      setTimeout(typeChar, lineIndex === lines.length ? 200 : 100 + Math.random() * 30);
+    }
+
+    output.scrollTop = output.scrollHeight;
+  }
+
+  setTimeout(typeChar, 600);
+</script>
+
+</body>
+</html>
