@@ -105,7 +105,8 @@
     "",
     "",
     "Check Complete.",
-    "OconeeConnect$ "];
+    "OconeeConnect$ "
+  ];
 
   const output = document.getElementById('output');
   let lineIndex = 0;
@@ -130,12 +131,12 @@
       setTimeout(typeChar, 5 + Math.random() * 12);
     } else {
       // End of line → add newline and move to next
-      currentText += "\n";
+      //currentText += "\n";
       output.textContent = currentText;
       charIndex = 0;
       lineIndex++;
       // Shorter pause between lines (faster overall feel)
-      setTimeout(typeChar, lineIndex === lines.length - 1 ? 1200 : 200 + Math.random() * 200);
+      setTimeout(typeChar, lineIndex === lines.length - 1 ? 800 : 200 + Math.random() * 200);
     }
 
     // Auto-scroll
