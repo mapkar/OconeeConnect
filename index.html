@@ -74,12 +74,31 @@
 
 <div class="terminal">
   <div class="output" id="output"></div>
-</div>
-
 <script>
+  // Helper to get current EST time formatted nicely
+  function getCurrentEST() {
+    const now = new Date();
+    // Convert to EST (UTC-5, or UTC-4 during DST - Intl handles DST automatically)
+    const estFormatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+    const parts = estFormatter.formatToParts(now);
+    const date = `${parts.find(p => p.type === 'year').value}-${parts.find(p => p.type === 'month').value}-${parts.find(p => p.type === 'day').value}`;
+    const time = `${parts.find(p => p.type === 'hour').value}:${parts.find(p => p.type === 'minute').value}:${parts.find(p => p.type === 'second').value} ${parts.find(p => p.type === 'dayPeriod').value} EST`;
+    return `CURRENT DATE & TIME: ${date} ${time}`;
+  }
+
   const lines = [
     "[BOOT] OconeeConnect v0.1 – Community Mesh Node",
     "Oconee County – Seneca / Walhalla / Foothills",
+    getCurrentEST(),   // ← dynamic current EST time inserted here
     "",
     "[INFO] Loading kernel........ OK",
     "[INFO] LoRa radio (915 MHz).. PENDING",
