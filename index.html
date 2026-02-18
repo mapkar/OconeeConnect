@@ -104,7 +104,7 @@
     "----------------------------------------------------",
     "",
     "Check Complete.",
-    "web@OconeeConnect:~$ "
+    "web@OconeeConnect:~$ "   // ← note the trailing space so cursor has room
   ];
 
   const output = document.getElementById('output');
@@ -114,7 +114,7 @@
 
   function typeChar() {
     if (lineIndex >= lines.length) {
-      // Finished: append cursor right after the last prompt text
+      // All lines done → append cursor right after the last text (no extra newline)
       output.innerHTML += '<span class="cursor blink-slow"></span>';
       output.scrollTop = output.scrollHeight;
       return;
@@ -128,7 +128,11 @@
       charIndex++;
       setTimeout(typeChar, 5 + Math.random() * 12);
     } else {
-      currentText += "\n";
+      // Finished this line
+      if (lineIndex < lines.length - 1) {
+        // Add newline only for non-final lines
+        currentText += "\n";
+      }
       output.textContent = currentText;
       charIndex = 0;
       lineIndex++;
