@@ -96,8 +96,8 @@
   }
 
   const lines = [
-    "[BOOT] OconeeConnect v0.1 – Community Mesh Node",
-    "Oconee County – Seneca / Walhalla / Foothills",
+    "[BOOT] OconeeConnect v0.1 – Community Mesh",
+    "[Function] Requesting Status",
     getCurrentEST(),   // ← dynamic current EST time inserted here
     "",
     "[INFO] Loading kernel........ OK",
@@ -145,7 +145,7 @@
       currentText += line[charIndex];
       output.textContent = currentText;
       charIndex++;
-      setTimeout(typeChar, 5 + Math.random() * 6);
+      setTimeout(typeChar, 5 + Math.random() * 3);
     } else {
       // Finished this line
       if (lineIndex < lines.length - 1) {
@@ -155,7 +155,7 @@
       output.textContent = currentText;
       charIndex = 0;
       lineIndex++;
-      setTimeout(typeChar, lineIndex === lines.length ? 400 : 200 + Math.random() * 50);
+      setTimeout(typeChar, lineIndex === lines.length ? 200 : 100 + Math.random() * 30);
     }
 
     output.scrollTop = output.scrollHeight;
