@@ -1,0 +1,10 @@
+site_name: OconeeConnect
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - What is Meshtastic?: about-meshtastic.md
+  - How to Connect: how-to-connect.md
+  - Why Mesh in Oconee: why-mesh.md
+  - About the Area: area.md
+  - Support Growth: support.md
