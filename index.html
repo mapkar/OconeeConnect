@@ -126,7 +126,7 @@
       currentText += line[charIndex];
       output.textContent = currentText;
       charIndex++;
-      setTimeout(typeChar, 5 + Math.random() * 12);
+      setTimeout(typeChar, 5 + Math.random() * 6);
     } else {
       // Finished this line
       if (lineIndex < lines.length - 1) {
@@ -136,7 +136,7 @@
       output.textContent = currentText;
       charIndex = 0;
       lineIndex++;
-      setTimeout(typeChar, lineIndex === lines.length ? 800 : 200 + Math.random() * 50);
+      setTimeout(typeChar, lineIndex === lines.length ? 400 : 200 + Math.random() * 50);
     }
 
     output.scrollTop = output.scrollHeight;
