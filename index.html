@@ -79,7 +79,7 @@
 <script>
   const lines = [
     "[BOOT] OconeeConnect v0.1 – Community Mesh Node",
-    "      Upstate SC – Seneca / Walhalla / Lake Keowee",
+    "      Upstate SC – Seneca / Walhalla / Foothills",
     "",
     "[INFO] Loading kernel........ OK",
     "[INFO] LoRa radio (915 MHz).. PENDING",
@@ -90,17 +90,21 @@
     "[INFO] Mesh routing.......... PENDING",
     "",
     "[STATUS] Connecting to Oconee mesh",
-    "         → Scanning high-ground relays",
-    "         → Checking Seneca → Walhalla path",
+    "  → Scanning high-ground relays",
+    "     |||||||||||||||||||||||||||",
+    "  → Checking Seneca → Walhalla path",
+    "     |||||||||||||||||||||||||||",
     "",
     "[WARN] No uplink – local-only mode active",
     "       Normal during initial rollout.",
     "",
     "----------------------------------------------------",
-    "       OconeeConnect is currently PENDING",
-    "       Full site and mesh access coming soon",
+    "OconeeConnect is currently PENDING",
+    "Full site and mesh access coming soon",
     "----------------------------------------------------",
     "",
+    "",
+    "Check Complete.",
     "OconeeConnect$ "
   ];
 
@@ -124,7 +128,7 @@
       output.textContent = currentText;
       charIndex++;
       // Faster typing: 15–40 ms per char
-      setTimeout(typeChar, 10 + Math.random() * 25);
+      setTimeout(typeChar, 5 + Math.random() * 12);
     } else {
       // End of line → add newline and move to next
       currentText += "\n";
