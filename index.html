@@ -116,8 +116,8 @@
     "  → Checking MTR29664a - PENDING",
     "  → Checking SLM29676a - PENDING",
     "  → Checking WSM29693a - PENDING",
-    "  → Checking ALBTS-HUB  - ONLINE",
-    "  → Checking TCCBBS.    - OFFLINE",
+    "  → Checking ALBTS-HUB - ONLINE",
+    "  → Checking TCCBBS.   - OFFLINE",
     "",
     "[WARN] No uplink – local-only mode active",
     "Normal during initial rollout.",
@@ -127,9 +127,9 @@
     "Full site and mesh access coming soon",
     "We are now seeking relay node locations",
     "Desired locstions include: ",
-    "Antenna Masts, Water Towers",
-    "High Buildings, Hilltops",
-    "Light or Flag Poles",
+    "Antenna Masts, Water Towers,",
+    "High Buildings, Hilltops,",
+    "Light or Flag Poles,",
     "Private Mountainside Property",
     "If interested, contact  @0k_sashes on X",
     "----------------------------------------------------",
@@ -157,7 +157,7 @@
       currentText += line[charIndex];
       output.textContent = currentText;
       charIndex++;
-      setTimeout(typeChar, 5 + Math.random() * 3);
+      setTimeout(typeChar, 5 + Math.random() * 2);
     } else {
       // Finished this line
       if (lineIndex < lines.length - 1) {
@@ -167,14 +167,14 @@
       output.textContent = currentText;
       charIndex = 0;
       lineIndex++;
-      setTimeout(typeChar, lineIndex === lines.length ? 200 : 100 + Math.random() * 30);
+      setTimeout(typeChar, lineIndex === lines.length ? 100 : 50 + Math.random() * 30);
     }
 
     output.scrollTop = output.scrollHeight;
   }
 
   // Start after brief delay
-  setTimeout(typeChar, 600);
+  setTimeout(typeChar, 800);
 </script>
 
 </body>
