@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Home · OconeeConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="crt-bg">
+    <div class="scan"></div>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand-link" href="home.html">OCONEECONNECT<span>Oconee County mesh</span></a>
+        <input class="nav-toggle" id="nav-toggle" type="checkbox" />
+        <label class="burger" for="nav-toggle">MENU</label>
+        <nav class="nav" aria-label="Primary">
+          <a href="home.html">Home</a>
+          <a href="coverage.html">Coverage</a>
+          <a href="mesh.html">Mesh</a>
+          <a href="radios.html">Radios</a>
+          <a href="connect.html">Connect</a>
+          <a href="meshtastic.html">Meshtastic</a>
+          <a href="why.html">Why</a>
+          <a href="area.html">Area</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="page wrap">
+      <h1>OCONEECONNECT</h1>
+      <p class="lede">Off-grid mesh communication for Oconee County, SC</p>
+      <p>Stay in touch across Seneca, Walhalla, Lake Keowee, and the Blue Ridge foothills when cell service is weak, towers are down, or you are simply off the pavement.</p>
+      <p>OconeeConnect is a community LoRa mesh. It is local-first: short texts, locations, and alerts that hop radio-to-radio. No monthly plan. No account. No internet required for the radios themselves.</p>
+      <div class="okbox">
+        Planned backbone protocol: <strong>MeshCore</strong> on the US 915 MHz band. Dedicated solar repeaters first in Seneca and Walhalla, bridged near Poplar Springs Road and Blue Ridge Boulevard. Meshtastic is widely used here too — same radios, different firmware. The two do not talk to each other over the air. See <a href="mesh.html">Mesh</a> and <a href="meshtastic.html">Meshtastic</a>.
+      </div>
+      <div class="grid">
+        <a class="card" href="coverage.html"><span class="name">Coverage plan</span><span class="hint">Towns, hubs, and the first backbone</span></a>
+        <a class="card" href="mesh.html"><span class="name">How the mesh works</span><span class="hint">LoRa, hops, MeshCore roles</span></a>
+        <a class="card" href="radios.html"><span class="name">Radios &amp; repeaters</span><span class="hint">Handhelds, RAK, solar kits</span></a>
+        <a class="card" href="connect.html"><span class="name">How to connect</span><span class="hint">Flash, preset, first message</span></a>
+        <a class="card" href="why.html"><span class="name">Why it matters here</span><span class="hint">Helene, outages, rural gaps</span></a>
+        <a class="card" href="support.html"><span class="name">Help it grow</span><span class="hint">Host a site or add a node</span></a>
+      </div>
+      <h2>What this is not</h2>
+      <ul>
+        <li>Not a cell replacement for voice or 911.</li>
+        <li>Not finished county-wide coverage. The splash is honest: rollout is early.</li>
+        <li>Not a commercial network. Sites are volunteered. Hardware is yours.</li>
+      </ul>
+      <p>Live maps elsewhere: <a href="https://meshmap.net/">MeshMap.net</a>. Regional talk: Upstate SC Meshtastic groups. Public contact: <a href="https://x.com/0k_sashes">@0k_sashes</a> on X.</p>
+    </main>
+    <footer class="foot wrap">
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="index.html">Boot</a>
+        <a href="home.html">Home</a>
+        <a href="coverage.html">Coverage</a>
+        <a href="mesh.html">Mesh</a>
+        <a href="radios.html">Radios</a>
+        <a href="connect.html">Connect</a>
+        <a href="meshtastic.html">Meshtastic</a>
+        <a href="why.html">Why</a>
+        <a href="area.html">Area</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <div>73 · OconeeConnect · local comms for local folks</div>
+    </footer>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>
