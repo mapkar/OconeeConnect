@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Meshtastic · OconeeConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="crt-bg">
+    <div class="scan"></div>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand-link" href="home.html">OCONEECONNECT<span>Oconee County mesh</span></a>
+        <input class="nav-toggle" id="nav-toggle" type="checkbox" />
+        <label class="burger" for="nav-toggle">MENU</label>
+        <nav class="nav" aria-label="Primary">
+          <a href="home.html">Home</a>
+          <a href="coverage.html">Coverage</a>
+          <a href="mesh.html">Mesh</a>
+          <a href="radios.html">Radios</a>
+          <a href="connect.html">Connect</a>
+          <a href="meshtastic.html">Meshtastic</a>
+          <a href="why.html">Why</a>
+          <a href="area.html">Area</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="page wrap">
+      <h1>Meshtastic guide</h1>
+      <p class="lede">The other firmware on the same radios</p>
+      <p>Meshtastic is the older, more common LoRa messenger in the US. You flash a board, open the app, and nearby Meshtastic nodes help carry the message. It is excellent for a hike, a ballgame, or a neighborhood that has not built dedicated repeaters yet.</p>
+      <div class="warn">A Meshtastic node cannot message a MeshCore node over the air. OconeeConnect’s planned county backbone is MeshCore. Keep Meshtastic if that is the group you actually talk to. Switch firmware if you want the OconeeConnect backbone.</div>
+      <h2>How Meshtastic hops</h2>
+      <ol>
+        <li>Each person has a node.</li>
+        <li>Phone connects over Bluetooth.</li>
+        <li>A text goes out over 915 MHz LoRa.</li>
+        <li>Nearby Meshtastic nodes rebroadcast it (managed flooding).</li>
+        <li>Location can ride along if the board has GPS.</li>
+      </ol>
+      <h2>Join a Meshtastic mesh</h2>
+      <ol class="steps">
+        <li>Same 915 MHz hardware as the radios page.</li>
+        <li>Flash from Chrome/Edge at <a href="https://flasher.meshtastic.org">flasher.meshtastic.org</a>. Latest stable.</li>
+        <li>Install the Meshtastic app (Play Store, App Store) or use <a href="https://client.meshtastic.org">client.meshtastic.org</a>.</li>
+        <li>Settings → LoRa → Region → <strong>US</strong>.</li>
+        <li>Preset <strong>LongFast</strong> is the usual public starting point.</li>
+      </ol>
+      <p>Public LongFast uses a well-known default key. Anyone on that preset can read the public channel. Use a secondary channel with a private key for family or team traffic.</p>
+      <h2>Local Meshtastic reality</h2>
+      <p>Upstate SC already has Meshtastic users. Search <a href="https://meshmap.net/">MeshMap.net</a> and local Facebook groups. That activity is useful — it is just not the same network as the MeshCore hubs described on <a href="coverage.html">Coverage</a>.</p>
+      <p>Official docs: <a href="https://meshtastic.org/">meshtastic.org</a></p>
+    </main>
+    <footer class="foot wrap">
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="index.html">Boot</a>
+        <a href="home.html">Home</a>
+        <a href="coverage.html">Coverage</a>
+        <a href="mesh.html">Mesh</a>
+        <a href="radios.html">Radios</a>
+        <a href="connect.html">Connect</a>
+        <a href="meshtastic.html">Meshtastic</a>
+        <a href="why.html">Why</a>
+        <a href="area.html">Area</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <div>73 · OconeeConnect · local comms for local folks</div>
+    </footer>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>
