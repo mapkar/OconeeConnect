@@ -2,180 +2,171 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OconeeConnect – Initializing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>OCONEECONNECT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
   <style>
-    * {
+    body { color: var(--amber); user-select: none; }
+    .boot {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 20px 24px;
+    }
+    .brand { text-align: center; margin: 4vh 0 18px; z-index: 1; }
+    .brand h1 {
+      font-size: clamp(28px, 8vw, 64px);
+      letter-spacing: 0.14em;
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
     }
-    body {
-      background: #0a0a0a;
-      color: #00ff9f;
-      font-family: 'Courier New', Courier, monospace;
-      height: 100vh;
-      padding: 2rem;
-      overflow: hidden;
+    .brand .sub {
+      margin-top: 10px;
+      color: var(--amber-dim);
+      letter-spacing: 0.22em;
+      font-size: 11px;
+      text-transform: uppercase;
     }
-    .terminal {
-      width: 100%;
-      max-width: 1000px;
-      height: 100%;
-      background: #000;
-      border: 1px solid #003300;
-      border-radius: 6px;
-      box-shadow: 
-        inset 0 0 60px rgba(0, 255, 159, 0.08),
-        0 0 40px rgba(0, 255, 159, 0.15);
-      padding: 1.5rem;
-      overflow: hidden;
-      position: relative;
-    }
-    .terminal::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        transparent 0px,
-        transparent 2px,
-        rgba(0, 255, 159, 0.05) 2px,
-        rgba(0, 255, 159, 0.05) 4px
-      );
-      pointer-events: none;
+    .post {
+      width: min(720px, 100%);
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.55;
       z-index: 1;
     }
-    .output {
-      font-size: 1.05rem;
-      line-height: 1.5;
-      white-space: pre-wrap;
-      height: 100%;
-      overflow-y: auto;
-      padding-right: 1rem;
+    .line {
+      display: grid;
+      grid-template-columns: max-content minmax(16px, 1fr) max-content;
+      column-gap: 10px;
+      align-items: baseline;
+      opacity: 0;
     }
+    .line.on { opacity: 1; }
+    .line .dots { border-bottom: 1px dotted var(--amber-dim); min-width: 16px; height: 0.85em; }
+    .line .val { color: var(--muted); text-align: right; letter-spacing: 0.08em; }
+    .hdr { color: var(--muted); margin: 10px 0 6px; opacity: 0; }
+    .hdr.on { opacity: 1; }
+    .ok { color: var(--green) !important; }
+    .fail { color: var(--red) !important; }
+    .warn { color: var(--orange) !important; }
     .cursor {
-      display: inline-block;
-      width: 9px;
-      height: 1.2em;
-      background: #00ff9f;
-      animation: blink 1s step-end infinite;
-      vertical-align: middle;
-      margin-left: 3px;
+      display: inline-block; width: 9px; height: 14px; background: var(--amber);
+      margin-left: 4px; vertical-align: -2px; animation: blink 1s steps(1) infinite;
     }
-    @keyframes blink {
-      50% { opacity: 0; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .menu {
+      width: min(720px, 100%);
+      display: none;
+      gap: 12px;
+      margin-top: 22px;
+      z-index: 1;
     }
-    .blink-slow {
-      animation: blink 1.8s step-end infinite;
+    .menu.on { display: grid; grid-template-columns: 1fr 1fr; }
+    .choice {
+      display: block; text-decoration: none;
+      border: 1px solid var(--amber-dim); background: #16140c;
+      color: var(--amber); padding: 18px 16px;
+    }
+    .choice:hover, .choice:focus {
+      outline: none; background: #2a220e; border-color: var(--amber);
+      box-shadow: 0 0 0 1px var(--amber);
+    }
+    .choice .name { font-size: 16px; letter-spacing: 0.12em; }
+    .choice .hint { display: block; margin-top: 6px; color: var(--muted); font-size: 12px; }
+    .boot-foot {
+      margin-top: 18px; color: var(--amber-dim); font-size: 12px;
+      letter-spacing: 0.08em; text-align: center; z-index: 1;
+    }
+    .instant-nav { z-index: 1; width: min(720px, 100%); margin-top: 10px; text-align: center; }
+    .instant-nav a { color: var(--amber-dim); font-size: 12px; letter-spacing: 0.08em; }
+    noscript .menu { display: grid; }
+    @media (max-width: 560px) {
+      .menu.on, noscript .menu { grid-template-columns: 1fr; }
+      .boot { padding: 18px 14px 16px; }
     }
   </style>
 </head>
 <body>
-
-<div class="terminal">
-  <div class="output" id="output"></div>
-<script>
-  // Helper to get current EST time formatted nicely
-  function getCurrentEST() {
-    const now = new Date();
-    // Convert to EST (UTC-5, or UTC-4 during DST - Intl handles DST automatically)
-    const estFormatter = new Intl.DateTimeFormat('en-US', {
-      timeZone: 'America/New_York',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: true
-    });
-    const parts = estFormatter.formatToParts(now);
-    const date = `${parts.find(p => p.type === 'year').value}-${parts.find(p => p.type === 'month').value}-${parts.find(p => p.type === 'day').value}`;
-    const time = `${parts.find(p => p.type === 'hour').value}:${parts.find(p => p.type === 'minute').value}:${parts.find(p => p.type === 'second').value} ${parts.find(p => p.type === 'dayPeriod').value} EST`;
-    return `CURRENT DATE & TIME: ${date} ${time}`;
-  }
-
-  const lines = [
-    "web@OconeeConnect:~$ ./MeshNetStatus.sh",
-    "",
-    "[BOOT] OconeeConnect v0.1 – Community Mesh",
-    "[Function] Requesting Status",
-    getCurrentEST(),   // ← dynamic current EST time inserted here
-    "",
-    "[INFO] Loading kernel........ OK",
-    "[INFO] LoRa radio (915 MHz).. OK",
-    "[INFO] Encryption module..... OK",
-    "[INFO] Scanning nodes........ OK",
-    "[INFO] GPS calibration....... OK",
-    "[INFO] Solar interface....... OK",
-    "[INFO] Mesh routing.......... ERROR",
-    "",
-    "[STATUS] Connecting to Oconee mesh",
-    "  → Checking SEN29672a - PENDING",
-    "  → Checking WAL29691a - PENDING",
-    "  → Checking MTR29664a - PENDING",
-    "  → Checking SLM29676a - PENDING",
-    "  → Checking WSM29693a - PENDING",
-    "  → Checking ALBTS-HUB - ONLINE",
-    "  → Checking TCCBBS.   - OFFLINE",
-    "",
-    "[WARN] No uplink – local-only mode active",
-    "Normal during initial rollout.",
-    "",
-    "----------------------------------------------------",
-    "OconeeConnect is currently PENDING",
-    "Full site and mesh access coming soon",
-    "We are now seeking relay node locations",
-    "Desired locstions include: ",
-    "Antenna Masts, Water Towers,",
-    "High Buildings, Hilltops,",
-    "Light or Flag Poles,",
-    "Private Mountainside Property",
-    "If interested, contact  @0k_sashes on X",
-    "----------------------------------------------------",
-    "",
-    "Check Complete.",
-    "web@OconeeConnect:~$ "   // ← note the trailing space so cursor has room
-  ];
-
-  const output = document.getElementById('output');
-  let lineIndex = 0;
-  let charIndex = 0;
-  let currentText = "";
-
-  function typeChar() {
-    if (lineIndex >= lines.length) {
-      // All lines done → append cursor right after the last text (no extra newline)
-      output.innerHTML += '<span class="cursor blink-slow"></span>';
-      output.scrollTop = output.scrollHeight;
-      return;
-    }
-
-    const line = lines[lineIndex];
-
-    if (charIndex < line.length) {
-      currentText += line[charIndex];
-      output.textContent = currentText;
-      charIndex++;
-      setTimeout(typeChar, .25 + Math.random());
-    } else {
-      // Finished this line
-      if (lineIndex < lines.length - 1) {
-        // Add newline only for non-final lines
-        currentText += "\n";
+  <a class="skip" href="home.html">Skip boot — enter site</a>
+  <div class="crt-bg boot">
+    <div class="scan"></div>
+    <div class="vignette"></div>
+    <div class="brand">
+      <h1>OCONEECONNECT</h1>
+      <div class="sub">Oconee County · community mesh</div>
+    </div>
+    <div class="post" id="post"></div>
+    <div class="menu" id="menu">
+      <a class="choice" href="home.html"><span class="name"><span class="kbd">1</span>ENTER SITE</span><span class="hint">Overview · what this is</span></a>
+      <a class="choice" href="coverage.html"><span class="name"><span class="kbd">2</span>COVERAGE</span><span class="hint">Seneca · Walhalla · backbone plan</span></a>
+      <a class="choice" href="mesh.html"><span class="name"><span class="kbd">3</span>MESH</span><span class="hint">LoRa · MeshCore · how hops work</span></a>
+      <a class="choice" href="radios.html"><span class="name"><span class="kbd">4</span>RADIOS</span><span class="hint">Handhelds · solar repeaters</span></a>
+      <a class="choice" href="connect.html"><span class="name"><span class="kbd">5</span>CONNECT</span><span class="hint">Flash · join · first message</span></a>
+      <a class="choice" href="support.html"><span class="name"><span class="kbd">6</span>SUPPORT</span><span class="hint">Host a site · grow the mesh</span></a>
+    </div>
+    <div class="instant-nav"><a href="home.html">If the boot hangs, open Home →</a></div>
+    <div class="boot-foot" id="foot">FULL NAV ON EVERY PAGE · NEVER A DEAD END</div>
+  </div>
+  <noscript>
+    <div class="wrap" style="padding:20px 0 40px;position:relative;z-index:1;">
+      <p><a href="home.html">Home</a> · <a href="coverage.html">Coverage</a> · <a href="mesh.html">Mesh</a> · <a href="radios.html">Radios</a> · <a href="connect.html">Connect</a> · <a href="meshtastic.html">Meshtastic</a> · <a href="why.html">Why</a> · <a href="area.html">Area</a> · <a href="support.html">Support</a></p>
+    </div>
+  </noscript>
+  <script>
+    (function () {
+      const post = document.getElementById("post");
+      const menu = document.getElementById("menu");
+      function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+      function add(html, cls) {
+        const el = document.createElement("div");
+        el.className = cls || "line";
+        el.innerHTML = html;
+        post.appendChild(el);
+        requestAnimationFrame(function () { el.classList.add("on"); });
       }
-      output.textContent = currentText;
-      charIndex = 0;
-      lineIndex++;
-      setTimeout(typeChar, lineIndex === lines.length ? 2 : 1 + Math.random() * 1);
-    }
-
-    output.scrollTop = output.scrollHeight;
-  }
-
-  // Start after brief delay
-  setTimeout(typeChar, 800);
-</script>
-
+      function check(label, kind, status) {
+        return '<span>' + label + '</span><span class="dots"></span><span class="val ' + kind + '">' + status + "</span>";
+      }
+      function nowLine() {
+        const d = new Date();
+        return d.toLocaleString("en-US", { timeZone: "America/New_York", hour12: true });
+      }
+      async function run() {
+        add("OCONEECONNECT BIOS  0.2   " + nowLine(), "hdr");
+        await sleep(160);
+        add("Community mesh · Oconee County, South Carolina", "hdr");
+        await sleep(200);
+        add(check("LORA RADIO", "ok", "915 MHz"));
+        await sleep(180);
+        add(check("PROTOCOL", "ok", "MESHCORE"));
+        await sleep(180);
+        add(check("REGION", "ok", "USA / CANADA"));
+        await sleep(180);
+        add(check("SENECA HUB", "warn", "PLANNED"));
+        await sleep(140);
+        add(check("WALHALLA HUB", "warn", "PLANNED"));
+        await sleep(140);
+        add(check("PSR BACKBONE", "warn", "SITE WORK"));
+        await sleep(140);
+        add(check("UPLINK", "warn", "LOCAL ONLY"));
+        await sleep(180);
+        add(check("SYSTEM", "ok", "READY"));
+        await sleep(160);
+        const cur = document.createElement("div");
+        cur.className = "line on";
+        cur.innerHTML = '<span>SELECT PAGE<span class="cursor"></span></span>';
+        post.appendChild(cur);
+        menu.classList.add("on");
+      }
+      document.addEventListener("keydown", function (e) {
+        const map = { "1": "home.html", "2": "coverage.html", "3": "mesh.html", "4": "radios.html", "5": "connect.html", "6": "support.html" };
+        if (map[e.key]) location.href = map[e.key];
+      });
+      run();
+    })();
+  </script>
 </body>
 </html>
