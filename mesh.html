@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Mesh · OconeeConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="crt-bg">
+    <div class="scan"></div>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand-link" href="home.html">OCONEECONNECT<span>Oconee County mesh</span></a>
+        <input class="nav-toggle" id="nav-toggle" type="checkbox" />
+        <label class="burger" for="nav-toggle">MENU</label>
+        <nav class="nav" aria-label="Primary">
+          <a href="home.html">Home</a>
+          <a href="coverage.html">Coverage</a>
+          <a href="mesh.html">Mesh</a>
+          <a href="radios.html">Radios</a>
+          <a href="connect.html">Connect</a>
+          <a href="meshtastic.html">Meshtastic</a>
+          <a href="why.html">Why</a>
+          <a href="area.html">Area</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="page wrap">
+      <h1>How the mesh works</h1>
+      <p class="lede">LoRa radios · planned MeshCore backbone</p>
+      <p>Think of it as passing a short note across a room of radios. Your handheld does not need to reach Walhalla by itself. It needs to reach the next node that can.</p>
+      <h2>LoRa</h2>
+      <ul>
+        <li><strong>LoRa</strong> means Long Range: a slow, narrow radio mode that can travel miles on very little power.</li>
+        <li>In the US, including South Carolina, this is the licence-exempt <strong>915 MHz</strong> ISM band (902–928 MHz). FCC Part 15. No ham ticket required at legal power.</li>
+        <li>Devices are small, cheap, and run for days on a battery — or continuously with solar.</li>
+      </ul>
+      <h2>What you actually do</h2>
+      <ol>
+        <li>You carry or mount a LoRa node.</li>
+        <li>Your phone talks to that node over Bluetooth (sometimes USB or Wi-Fi).</li>
+        <li>You type a short message in the app.</li>
+        <li>The radio sends it. Nearby infrastructure hears it and forwards it.</li>
+        <li>The note hops until it reaches the person or room you meant.</li>
+      </ol>
+      <h2>MeshCore vs Meshtastic</h2>
+      <p>Same class of boards. Two different firmwares. They do <strong>not</strong> exchange messages over the air.</p>
+      <table>
+        <thead>
+          <tr><th></th><th>MeshCore</th><th>Meshtastic</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>OconeeConnect plan</td><td>Planned county backbone</td><td>Common handheld / pop-up mesh</td></tr>
+          <tr><td>How traffic moves</td><td>Clients do not repeat. Dedicated repeaters carry paths.</td><td>Most nodes can rebroadcast. Easy ad-hoc groups.</td></tr>
+          <tr><td>Best at</td><td>Planned coverage across towns</td><td>Hikes, events, “flash it and talk”</td></tr>
+          <tr><td>US radio starting point</td><td>USA/Canada preset (often 910.525 MHz)</td><td>Region US, LongFast on 915 MHz slots</td></tr>
+        </tbody>
+      </table>
+      <p>OconeeConnect is building <strong>infrastructure</strong>: solar repeaters on purpose-chosen high spots. That is why the backbone is MeshCore. If you only want a weekend trail radio with friends, Meshtastic is still a good tool — just know it is a separate network. Full Meshtastic walkthrough: <a href="meshtastic.html">Meshtastic guide</a>.</p>
+      <h2>Radio plan for this mesh</h2>
+      <p>Initial rollout uses North American MeshCore settings with a higher spreading factor (<strong>SF11</strong>) so thin coverage still links. As more repeaters come up, spreading factor comes down (target toward <strong>SF5</strong>) so messages spend less time on the air.</p>
+      <div class="warn">Every node that wants to hear the OconeeConnect MeshCore backbone must use the same frequency, bandwidth, and spreading factor as that backbone. Wrong preset = silence.</div>
+      <p>Official MeshCore site: <a href="https://meshcore.co.uk/">meshcore.co.uk</a></p>
+    </main>
+    <footer class="foot wrap">
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="index.html">Boot</a>
+        <a href="home.html">Home</a>
+        <a href="coverage.html">Coverage</a>
+        <a href="mesh.html">Mesh</a>
+        <a href="radios.html">Radios</a>
+        <a href="connect.html">Connect</a>
+        <a href="meshtastic.html">Meshtastic</a>
+        <a href="why.html">Why</a>
+        <a href="area.html">Area</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <div>73 · OconeeConnect · local comms for local folks</div>
+    </footer>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>
