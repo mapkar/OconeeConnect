@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Coverage · OconeeConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="crt-bg">
+    <div class="scan"></div>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand-link" href="home.html">OCONEECONNECT<span>Oconee County mesh</span></a>
+        <input class="nav-toggle" id="nav-toggle" type="checkbox" />
+        <label class="burger" for="nav-toggle">MENU</label>
+        <nav class="nav" aria-label="Primary">
+          <a href="home.html">Home</a>
+          <a href="coverage.html">Coverage</a>
+          <a href="mesh.html">Mesh</a>
+          <a href="radios.html">Radios</a>
+          <a href="connect.html">Connect</a>
+          <a href="meshtastic.html">Meshtastic</a>
+          <a href="why.html">Why</a>
+          <a href="area.html">Area</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="page wrap">
+      <h1>Coverage plan</h1>
+      <p class="lede">Decentralized radios. Planned backbone.</p>
+      <p>Oconee is wide, folded, and wet. Mountains, valleys, hills, and lakes block line of sight. A mesh only works here if someone puts repeaters on purpose.</p>
+      <h2>Phase 1 — Seneca and Walhalla</h2>
+      <p>First goal: reliable coverage in the two largest population centers, then a link between them.</p>
+      <ul>
+        <li>Central repeater coverage for Seneca.</li>
+        <li>Central repeater coverage for Walhalla.</li>
+        <li>A backbone relay near <strong>Poplar Springs Road and Blue Ridge Boulevard</strong> (US 28) to bridge the two.</li>
+      </ul>
+      <h2>Later — height</h2>
+      <p>A high-performance remote repeater on a mountainside, once property is identified, to open the rest of the county so neighborhood nodes can attach to something that already hears both towns.</p>
+      <h2>Planned node map</h2>
+      <p>Names below are planning IDs, not a live status feed. Treat them as a sketch.</p>
+      <div class="diagram">
+        <pre>
+Seneca1 ---- ALB HUB ---- PSR HUB ---- Walhalla1
+               |              |
+           Wells1          RichMtn
+           Automaton       SixMile1
+        </pre>
+      </div>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Role</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ALB HUB</td><td>Seneca-side hub</td><td class="status-pend">Planned / early</td></tr>
+          <tr><td>PSR HUB</td><td>Backbone at Poplar Springs / US 28</td><td class="status-pend">Site work</td></tr>
+          <tr><td>Seneca1 / Walhalla1</td><td>Town access</td><td class="status-pend">Planned</td></tr>
+          <tr><td>RichMtn</td><td>Height / later county reach</td><td class="status-pend">Site needed</td></tr>
+          <tr><td>Wells1 / SixMile1</td><td>Community spokes</td><td class="status-pend">Planned</td></tr>
+          <tr><td>Automaton</td><td>Ops / gateway host</td><td class="status-ok">Existing machine</td></tr>
+        </tbody>
+      </table>
+      <h2>Town targets</h2>
+      <table>
+        <thead>
+          <tr><th>Place</th><th>Why it matters</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Seneca</td><td>Largest town. First hub.</td></tr>
+          <tr><td>Walhalla</td><td>County seat. Second hub.</td></tr>
+          <tr><td>Westminster / West Union</td><td>South and west spokes off the US 28 corridor.</td></tr>
+          <tr><td>Salem / Mountain Rest</td><td>North and west foothills. Need height.</td></tr>
+          <tr><td>Six Mile</td><td>East edge toward Clemson / Pickens.</td></tr>
+        </tbody>
+      </table>
+      <div class="note">Want a live picture of whatever is already on the air? Search maps such as <a href="https://meshmap.net/">MeshMap.net</a>. Do not assume this page is telemetry.</div>
+      <p><a href="support.html">Offer a rooftop, pole, or hill →</a></p>
+    </main>
+    <footer class="foot wrap">
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="index.html">Boot</a>
+        <a href="home.html">Home</a>
+        <a href="coverage.html">Coverage</a>
+        <a href="mesh.html">Mesh</a>
+        <a href="radios.html">Radios</a>
+        <a href="connect.html">Connect</a>
+        <a href="meshtastic.html">Meshtastic</a>
+        <a href="why.html">Why</a>
+        <a href="area.html">Area</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <div>73 · OconeeConnect · local comms for local folks</div>
+    </footer>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>
