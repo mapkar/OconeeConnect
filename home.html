@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
+  <script>
+    (function () {
+      try { if (localStorage.getItem("oc.theme") === "light") document.documentElement.setAttribute("data-theme", "light"); }
+      catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -18,7 +24,10 @@
       <div class="topbar-inner">
         <a class="brand-link" href="home.html">OCONEECONNECT<span>Oconee County mesh</span></a>
         <input class="nav-toggle" id="nav-toggle" type="checkbox" />
-        <label class="burger" for="nav-toggle">MENU</label>
+        <div class="bar-actions">
+          <button type="button" class="theme-toggle" data-theme-toggle>LIGHT</button>
+          <label class="burger" for="nav-toggle">MENU</label>
+        </div>
         <nav class="nav" aria-label="Primary">
           <a href="home.html">Home</a>
           <a href="coverage.html">Coverage</a>
