@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Connect · OconeeConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="crt-bg">
+    <div class="scan"></div>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand-link" href="home.html">OCONEECONNECT<span>Oconee County mesh</span></a>
+        <input class="nav-toggle" id="nav-toggle" type="checkbox" />
+        <label class="burger" for="nav-toggle">MENU</label>
+        <nav class="nav" aria-label="Primary">
+          <a href="home.html">Home</a>
+          <a href="coverage.html">Coverage</a>
+          <a href="mesh.html">Mesh</a>
+          <a href="radios.html">Radios</a>
+          <a href="connect.html">Connect</a>
+          <a href="meshtastic.html">Meshtastic</a>
+          <a href="why.html">Why</a>
+          <a href="area.html">Area</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="page wrap">
+      <h1>How to connect</h1>
+      <p class="lede">Join the OconeeConnect MeshCore mesh</p>
+      <p>About 15–30 minutes if the USB cable is a real data cable. Want Meshtastic instead? Use the <a href="meshtastic.html">Meshtastic guide</a>.</p>
+      <ol class="steps">
+        <li>
+          <strong>Get a 915 MHz board.</strong>
+          Heltec V3/V4, RAK4631 / RAK19003, T-Beam, Seeed trackers. Confirm the listing says US / 915 MHz.
+        </li>
+        <li>
+          <strong>Attach the antenna first.</strong>
+          Then power the board.
+        </li>
+        <li>
+          <strong>Flash MeshCore.</strong>
+          On a computer, open Chrome or Edge (not Safari/Firefox). Go to
+          <a href="https://flasher.meshcore.co.uk/">flasher.meshcore.co.uk</a>.
+          USB in, pick your board, pick the role: <em>Companion</em> for a personal radio, <em>Repeater</em> only if this box will live on a roof.
+          If the board previously ran Meshtastic, do a full erase on the first MeshCore flash.
+        </li>
+        <li>
+          <strong>Install the MeshCore app.</strong>
+          iOS App Store or Android Play Store. App list: <a href="https://meshcore.co.uk/apps.html">meshcore.co.uk/apps.html</a>.
+        </li>
+        <li>
+          <strong>Set the radio preset.</strong>
+          Pair over Bluetooth. Choose the <strong>USA/Canada</strong> region/preset so you are in the 902–928 MHz plan.
+          OconeeConnect’s first repeaters will start at a higher spreading factor (SF11) for range, then drop toward SF5 as the map fills in.
+          If you cannot hear anyone, the spreading factor or frequency does not match the local backbone — ask on X
+          <a href="https://x.com/0k_sashes">@0k_sashes</a> or a local group for the current numbers before you guess.
+        </li>
+        <li>
+          <strong>Name the node.</strong>
+          Something that says who and where you are (town helps). Send a short test into the public room once a repeater is in range.
+        </li>
+      </ol>
+      <h2>If nothing appears</h2>
+      <ul>
+        <li>Wrong region or SF. Most “dead radio” problems are this.</li>
+        <li>Charge-only USB cable. The flasher never sees the board.</li>
+        <li>You are in a hole and no repeater hears you yet. That is a coverage problem, not a broken radio. See <a href="coverage.html">Coverage</a>.</li>
+        <li>You flashed Meshtastic by habit. Reflash MeshCore, or stay on Meshtastic and use that mesh instead.</li>
+      </ul>
+      <div class="note">We will publish a channel QR and the locked radio numbers on this page once the first two hubs are on the air and stable. Until then, do not treat a random default as “the Oconee channel.”</div>
+    </main>
+    <footer class="foot wrap">
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="index.html">Boot</a>
+        <a href="home.html">Home</a>
+        <a href="coverage.html">Coverage</a>
+        <a href="mesh.html">Mesh</a>
+        <a href="radios.html">Radios</a>
+        <a href="connect.html">Connect</a>
+        <a href="meshtastic.html">Meshtastic</a>
+        <a href="why.html">Why</a>
+        <a href="area.html">Area</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <div>73 · OconeeConnect · local comms for local folks</div>
+    </footer>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>

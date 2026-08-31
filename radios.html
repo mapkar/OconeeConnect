@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Radios · OconeeConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="crt-bg">
+    <div class="scan"></div>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand-link" href="home.html">OCONEECONNECT<span>Oconee County mesh</span></a>
+        <input class="nav-toggle" id="nav-toggle" type="checkbox" />
+        <label class="burger" for="nav-toggle">MENU</label>
+        <nav class="nav" aria-label="Primary">
+          <a href="home.html">Home</a>
+          <a href="coverage.html">Coverage</a>
+          <a href="mesh.html">Mesh</a>
+          <a href="radios.html">Radios</a>
+          <a href="connect.html">Connect</a>
+          <a href="meshtastic.html">Meshtastic</a>
+          <a href="why.html">Why</a>
+          <a href="area.html">Area</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="page wrap">
+      <h1>Radios &amp; repeaters</h1>
+      <p class="lede">What to buy · what we mount</p>
+      <div class="warn">Buy <strong>US 915 MHz</strong> hardware only. EU 868 MHz boards will not work here. Never key the radio without an antenna attached.</div>
+      <h2>Handheld / companion (start here)</h2>
+      <p>These talk to your phone and send your messages into the mesh. Typical cost $25–50.</p>
+      <ul>
+        <li><strong>Heltec V3 / V4 or Wireless Tracker</strong> — common, cheap, easy to flash.</li>
+        <li><strong>LilyGO T-Beam or T-Deck</strong> — GPS on the T-Beam; screen/keys on the T-Deck.</li>
+        <li><strong>Seeed Xiao / Wio Tracker / T1000-E</strong> — small boards, good for packs and pockets.</li>
+      </ul>
+      <p>Upgrade the stock antenna to a real 915 MHz whip when you can. Hills eat weak antennas.</p>
+      <h2>Fixed repeaters (the backbone)</h2>
+      <p>MeshCore coverage comes from dedicated repeaters, not from every phone in a pocket. First-wave design for OconeeConnect:</p>
+      <ul>
+        <li>Base: <strong>RAK19003</strong> (WisBlock mini) class solar repeaters.</li>
+        <li>Omnidirectional 915 MHz antenna.</li>
+        <li>Mounts that fit the site: magnet, pole clamp, or mast.</li>
+        <li>Power: at least a <strong>3.7 V 5,000 mAh LiPo</strong> plus enough solar to keep it up through winter overcast.</li>
+      </ul>
+      <p>Where a ready-made enclosure is easier (billboard, school pole, or a temporary flagpole), a packaged unit such as the <strong>Seeed SenseCAP Solar Node P1-class</strong> is the kind of box site owners can understand: small, solar, no grid drop.</p>
+      <h2>What a good site looks like</h2>
+      <ul>
+        <li>Height and a clean view toward Seneca, Walhalla, or both.</li>
+        <li>Water towers, masts, tall buildings, hilltops, light or flag poles, mountainside property.</li>
+        <li>Access for a yearly battery/antenna check.</li>
+        <li>No need for building power if solar is honest about shade.</li>
+      </ul>
+      <h2>Roles on MeshCore firmware</h2>
+      <table>
+        <thead>
+          <tr><th>Role</th><th>Use</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Companion</td><td>Your personal radio + phone app.</td></tr>
+          <tr><td>Repeater</td><td>Fixed site. Forwards traffic. Does not sit in your pocket.</td></tr>
+          <tr><td>Room server</td><td>Optional store-and-forward “room” on a high node.</td></tr>
+        </tbody>
+      </table>
+      <p>Flash from Chrome or Edge: <a href="https://flasher.meshcore.co.uk/">flasher.meshcore.co.uk</a>. Same physical board can run Meshtastic instead — one firmware at a time. See <a href="connect.html">How to connect</a>.</p>
+    </main>
+    <footer class="foot wrap">
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="index.html">Boot</a>
+        <a href="home.html">Home</a>
+        <a href="coverage.html">Coverage</a>
+        <a href="mesh.html">Mesh</a>
+        <a href="radios.html">Radios</a>
+        <a href="connect.html">Connect</a>
+        <a href="meshtastic.html">Meshtastic</a>
+        <a href="why.html">Why</a>
+        <a href="area.html">Area</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <div>73 · OconeeConnect · local comms for local folks</div>
+    </footer>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>
