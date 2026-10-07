@@ -25,7 +25,7 @@
           <a href="mesh.html">Mesh</a>
           <a href="radios.html">Radios</a>
           <a href="connect.html">Connect</a>
-          <a href="meshtastic.html">Meshtastic</a>
+          <a href="meshtastic.html">Settings</a>
           <a href="why.html">Why</a>
           <a href="area.html">Area</a>
           <a href="support.html">Support</a>
@@ -34,7 +34,7 @@
     </header>
     <main id="main" class="page wrap">
       <h1>How the mesh works</h1>
-      <p class="lede">LoRa radios · planned MeshCore backbone</p>
+      <p class="lede">LoRa radios · Meshtastic backbone</p>
       <p>Think of it as passing a short note across a room of radios. Your handheld does not need to reach Walhalla by itself. It needs to reach the next node that can.</p>
       <h2>LoRa</h2>
       <ul>
@@ -44,30 +44,30 @@
       </ul>
       <h2>What you actually do</h2>
       <ol>
-        <li>You carry or mount a LoRa node.</li>
+        <li>You carry or mount a LoRa node running Meshtastic.</li>
         <li>Your phone talks to that node over Bluetooth (sometimes USB or Wi-Fi).</li>
-        <li>You type a short message in the app.</li>
-        <li>The radio sends it. Nearby infrastructure hears it and forwards it.</li>
-        <li>The note hops until it reaches the person or room you meant.</li>
+        <li>You type a short message in the Meshtastic app.</li>
+        <li>The radio sends it. Nearby nodes on the same region, preset, and channel hear it and may forward it.</li>
+        <li>The note hops until it reaches the person you meant, or it runs out of hops.</li>
       </ol>
-      <h2>MeshCore vs Meshtastic</h2>
-      <p>Same class of boards. Two different firmwares. They do <strong>not</strong> exchange messages over the air.</p>
+      <h2>Why Meshtastic</h2>
+      <p>OconeeConnect is one firmware. Meshtastic is the one locals already run, the one South Carolina Mesh publishes, and the one a handheld can join without a private repeater protocol.</p>
       <table>
         <thead>
-          <tr><th></th><th>MeshCore</th><th>Meshtastic</th></tr>
+          <tr><th></th><th>OconeeConnect</th><th>Not this network</th></tr>
         </thead>
         <tbody>
-          <tr><td>OconeeConnect plan</td><td>Planned county backbone</td><td>Common handheld / pop-up mesh</td></tr>
-          <tr><td>How traffic moves</td><td>Clients do not repeat. Dedicated repeaters carry paths.</td><td>Most nodes can rebroadcast. Easy ad-hoc groups.</td></tr>
-          <tr><td>Best at</td><td>Planned coverage across towns</td><td>Hikes, events, “flash it and talk”</td></tr>
-          <tr><td>US radio starting point</td><td>USA/Canada preset (often 910.525 MHz)</td><td>Region US, LongFast on 915 MHz slots</td></tr>
+          <tr><td>Firmware</td><td>Meshtastic</td><td>MeshCore, LoRaWAN, Helium</td></tr>
+          <tr><td>How traffic moves</td><td>Clients can rebroadcast. Solar routers on high sites carry the towns.</td><td>MeshCore keeps repeating on dedicated repeaters only</td></tr>
+          <tr><td>Starting radio</td><td>Region US, LongFast, hop limit 3</td><td>A MeshCore USA/Canada preset will not hear us</td></tr>
+          <tr><td>Best at</td><td>Town check-ins, trails, outage notes, a planned Seneca–Walhalla backbone</td><td>A second mesh that cannot see this one</td></tr>
         </tbody>
       </table>
-      <p>OconeeConnect is building <strong>infrastructure</strong>: solar repeaters on purpose-chosen high spots. That is why the backbone is MeshCore. If you only want a weekend trail radio with friends, Meshtastic is still a good tool — just know it is a separate network. Full Meshtastic walkthrough: <a href="meshtastic.html">Meshtastic guide</a>.</p>
-      <h2>Radio plan for this mesh</h2>
-      <p>Initial rollout uses North American MeshCore settings with a higher spreading factor (<strong>SF11</strong>) so thin coverage still links. As more repeaters come up, spreading factor comes down (target toward <strong>SF5</strong>) so messages spend less time on the air.</p>
-      <div class="warn">Every node that wants to hear the OconeeConnect MeshCore backbone must use the same frequency, bandwidth, and spreading factor as that backbone. Wrong preset = silence.</div>
-      <p>Official MeshCore site: <a href="https://meshcore.co.uk/">meshcore.co.uk</a></p>
+      <p>Infrastructure is still the point: solar routers on purpose-chosen high spots, clients in pockets. A router role on a windowsill hurts the mesh. Details: <a href="meshtastic.html">Settings</a>.</p>
+      <h2>Radio plan</h2>
+      <p>Start on <strong>LongFast</strong>. It is the Meshtastic default and the usual public landing (frequency slot 20 if you set it explicitly). Hop limit stays at <strong>3</strong> until the Seneca / Walhalla / Poplar Springs routers are mapped. Faster presets are a later congestion tool, not the join setting.</p>
+      <div class="warn">Every node that wants to hear OconeeConnect must use Meshtastic, region US, and the same primary channel. Wrong firmware or wrong region = silence.</div>
+      <p>Official docs: <a href="https://meshtastic.org/">meshtastic.org</a></p>
     </main>
     <footer class="foot wrap">
       <nav class="foot-nav" aria-label="Footer">
@@ -77,7 +77,7 @@
         <a href="mesh.html">Mesh</a>
         <a href="radios.html">Radios</a>
         <a href="connect.html">Connect</a>
-        <a href="meshtastic.html">Meshtastic</a>
+        <a href="meshtastic.html">Settings</a>
         <a href="why.html">Why</a>
         <a href="area.html">Area</a>
         <a href="support.html">Support</a>

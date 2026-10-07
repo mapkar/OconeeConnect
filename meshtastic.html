@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Meshtastic · OconeeConnect</title>
+  <title>Settings · OconeeConnect</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
@@ -25,7 +25,7 @@
           <a href="mesh.html">Mesh</a>
           <a href="radios.html">Radios</a>
           <a href="connect.html">Connect</a>
-          <a href="meshtastic.html">Meshtastic</a>
+          <a href="meshtastic.html">Settings</a>
           <a href="why.html">Why</a>
           <a href="area.html">Area</a>
           <a href="support.html">Support</a>
@@ -33,30 +33,29 @@
       </div>
     </header>
     <main id="main" class="page wrap">
-      <h1>Meshtastic guide</h1>
-      <p class="lede">The other firmware on the same radios</p>
-      <p>Meshtastic is the older, more common LoRa messenger in the US. You flash a board, open the app, and nearby Meshtastic nodes help carry the message. It is excellent for a hike, a ballgame, or a neighborhood that has not built dedicated repeaters yet.</p>
-      <div class="warn">A Meshtastic node cannot message a MeshCore node over the air. OconeeConnect’s planned county backbone is MeshCore. Keep Meshtastic if that is the group you actually talk to. Switch firmware if you want the OconeeConnect backbone.</div>
-      <h2>How Meshtastic hops</h2>
+      <h1>Meshtastic settings</h1>
+      <p class="lede">The radio plan for this county mesh</p>
+      <p>This is the OconeeConnect network, not a side firmware. Flash steps are on <a href="connect.html">Connect</a>. These are the numbers that make a node audible.</p>
+      <div class="okbox">Region <strong>US</strong> · preset <strong>LongFast</strong> · frequency slot <strong>20</strong> · hop limit <strong>3</strong> · handheld role <strong>CLIENT</strong>.</div>
+      <h2>How a message hops</h2>
       <ol>
         <li>Each person has a node.</li>
         <li>Phone connects over Bluetooth.</li>
         <li>A text goes out over 915 MHz LoRa.</li>
-        <li>Nearby Meshtastic nodes rebroadcast it (managed flooding).</li>
-        <li>Location can ride along if the board has GPS.</li>
+        <li>Nearby Meshtastic nodes on the same channel rebroadcast it, up to the hop limit.</li>
+        <li>Location can ride along if the board has GPS and the channel allows it.</li>
       </ol>
-      <h2>Join a Meshtastic mesh</h2>
-      <ol class="steps">
-        <li>Same 915 MHz hardware as the radios page.</li>
-        <li>Flash from Chrome/Edge at <a href="https://flasher.meshtastic.org">flasher.meshtastic.org</a>. Latest stable.</li>
-        <li>Install the Meshtastic app (Play Store, App Store) or use <a href="https://client.meshtastic.org">client.meshtastic.org</a>.</li>
-        <li>Settings → LoRa → Region → <strong>US</strong>.</li>
-        <li>Preset <strong>LongFast</strong> is the usual public starting point.</li>
-      </ol>
-      <p>Public LongFast uses a well-known default key. Anyone on that preset can read the public channel. Use a secondary channel with a private key for family or team traffic.</p>
-      <h2>Local Meshtastic reality</h2>
-      <p>Upstate SC already has Meshtastic users. Search <a href="https://meshmap.net/">MeshMap.net</a> and local Facebook groups. That activity is useful — it is just not the same network as the MeshCore hubs described on <a href="coverage.html">Coverage</a>.</p>
-      <p>Official docs: <a href="https://meshtastic.org/">meshtastic.org</a></p>
+      <h2>Channels</h2>
+      <ul>
+        <li>Primary stays the public LongFast channel until a household QR is published. The default key is public. Do not put secrets on it.</li>
+        <li>Add a secondary channel with a private key for family or a route crew.</li>
+        <li>South Carolina Mesh publishes an optional secondary named SCMesh for the wider state map. Use their current join page at <a href="https://www.scmesh.us/">scmesh.us</a> if you want that. It is not required to hear a local Oconee node.</li>
+        <li>Do not rename the primary and leave the frequency slot at 0. The slot is hashed from the name. Set slot 20.</li>
+      </ul>
+      <h2>MQTT and position</h2>
+      <p>MQTT is optional and is not the mesh. If you uplink, leave encryption enabled and coarsen position. Map reports are unencrypted by design. A node in a drawer does not need a 10-meter map pin.</p>
+      <h2>If you still have MeshCore on a board</h2>
+      <p>Reflash Meshtastic and erase first. MeshCore will not exchange messages with this mesh. Official docs: <a href="https://meshtastic.org/">meshtastic.org</a>.</p>
     </main>
     <footer class="foot wrap">
       <nav class="foot-nav" aria-label="Footer">
@@ -66,7 +65,7 @@
         <a href="mesh.html">Mesh</a>
         <a href="radios.html">Radios</a>
         <a href="connect.html">Connect</a>
-        <a href="meshtastic.html">Meshtastic</a>
+        <a href="meshtastic.html">Settings</a>
         <a href="why.html">Why</a>
         <a href="area.html">Area</a>
         <a href="support.html">Support</a>
