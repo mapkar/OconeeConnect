@@ -102,9 +102,9 @@
     <div class="menu" id="menu">
       <a class="choice" href="home.html"><span class="name"><span class="kbd">1</span>ENTER SITE</span><span class="hint">Overview · what this is</span></a>
       <a class="choice" href="coverage.html"><span class="name"><span class="kbd">2</span>COVERAGE</span><span class="hint">Seneca · Walhalla · backbone plan</span></a>
-      <a class="choice" href="mesh.html"><span class="name"><span class="kbd">3</span>MESH</span><span class="hint">LoRa · MeshCore · how hops work</span></a>
-      <a class="choice" href="radios.html"><span class="name"><span class="kbd">4</span>RADIOS</span><span class="hint">Handhelds · solar repeaters</span></a>
-      <a class="choice" href="connect.html"><span class="name"><span class="kbd">5</span>CONNECT</span><span class="hint">Flash · join · first message</span></a>
+      <a class="choice" href="mesh.html"><span class="name"><span class="kbd">3</span>MESH</span><span class="hint">LoRa · Meshtastic · how hops work</span></a>
+      <a class="choice" href="radios.html"><span class="name"><span class="kbd">4</span>RADIOS</span><span class="hint">Handhelds · solar routers</span></a>
+      <a class="choice" href="connect.html"><span class="name"><span class="kbd">5</span>CONNECT</span><span class="hint">Flash Meshtastic · first message</span></a>
       <a class="choice" href="support.html"><span class="name"><span class="kbd">6</span>SUPPORT</span><span class="hint">Host a site · grow the mesh</span></a>
     </div>
     <div class="instant-nav"><a href="home.html">Home →</a></div>
@@ -112,7 +112,7 @@
   </div>
   <noscript>
     <div class="wrap" style="padding:20px 0 40px;position:relative;z-index:1;">
-      <p><a href="home.html">Home</a> · <a href="coverage.html">Coverage</a> · <a href="mesh.html">Mesh</a> · <a href="radios.html">Radios</a> · <a href="connect.html">Connect</a> · <a href="meshtastic.html">Meshtastic</a> · <a href="why.html">Why</a> · <a href="area.html">Area</a> · <a href="support.html">Support</a></p>
+      <p><a href="home.html">Home</a> · <a href="coverage.html">Coverage</a> · <a href="mesh.html">Mesh</a> · <a href="radios.html">Radios</a> · <a href="connect.html">Connect</a> · <a href="meshtastic.html">Settings</a> · <a href="why.html">Why</a> · <a href="area.html">Area</a> · <a href="support.html">Support</a></p>
     </div>
   </noscript>
   <script>
@@ -135,15 +135,15 @@
         return d.toLocaleString("en-US", { timeZone: "America/New_York", hour12: true });
       }
       async function run() {
-        add("OCONEECONNECT BIOS  0.2   " + nowLine(), "hdr");
+        add("OCONEECONNECT BIOS  0.3   " + nowLine(), "hdr");
         await sleep(160);
         add("Community mesh · Oconee County, South Carolina", "hdr");
         await sleep(200);
         add(check("LORA RADIO", "ok", "915 MHz"));
         await sleep(180);
-        add(check("PROTOCOL", "ok", "MESHCORE"));
+        add(check("PROTOCOL", "ok", "MESHTASTIC"));
         await sleep(180);
-        add(check("REGION", "ok", "USA / CANADA"));
+        add(check("REGION", "ok", "US"));
         await sleep(180);
         add(check("SENECA HUB", "warn", "PLANNED"));
         await sleep(140);
