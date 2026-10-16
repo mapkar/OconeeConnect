@@ -35,12 +35,12 @@
     <main id="main" class="page wrap">
       <h1>How the mesh works</h1>
       <p class="lede">LoRa radios · Meshtastic backbone</p>
-      <p>Think of it as passing a short note across a room of radios. Your handheld does not need to reach Walhalla by itself. It needs to reach the next node that can.</p>
+      <p>Think of it as passing a short note from radio to radio. Your handheld doesn’t need to reach Walhalla by itself — it just needs to reach the next node that can help carry the message.</p>
       <h2>LoRa</h2>
       <ul>
-        <li><strong>LoRa</strong> means Long Range: a slow, narrow radio mode that can travel miles on very little power.</li>
-        <li>In the US, including South Carolina, this is the licence-exempt <strong>915 MHz</strong> ISM band (902–928 MHz). FCC Part 15. No ham ticket required at legal power.</li>
-        <li>Devices are small, cheap, and run for days on a battery — or continuously with solar.</li>
+        <li><strong>LoRa</strong> stands for Long Range: a slow, narrow radio mode that can travel miles on very little power.</li>
+        <li>In the US (including South Carolina) this is the license-exempt <strong>915 MHz</strong> ISM band (902–928 MHz). No ham license required at legal power levels.</li>
+        <li>The devices are small, inexpensive, and can run for days on a battery — or continuously with a little solar.</li>
       </ul>
       <h2>What you actually do</h2>
       <ol>
@@ -51,22 +51,22 @@
         <li>The note hops until it reaches the person you meant, or it runs out of hops.</li>
       </ol>
       <h2>Why Meshtastic</h2>
-      <p>OconeeConnect is one firmware. Meshtastic is the one locals already run, the one South Carolina Mesh publishes, and the one a handheld can join without a private repeater protocol.</p>
+      <p>OconeeConnect uses one firmware: Meshtastic. It’s what many locals already run, what South Carolina Mesh publishes, and what a handheld can join without needing a private repeater protocol.</p>
       <table>
         <thead>
           <tr><th></th><th>OconeeConnect</th><th>Not this network</th></tr>
         </thead>
         <tbody>
           <tr><td>Firmware</td><td>Meshtastic</td><td>MeshCore, LoRaWAN, Helium</td></tr>
-          <tr><td>How traffic moves</td><td>Clients can rebroadcast. Solar routers on high sites carry the towns.</td><td>MeshCore keeps repeating on dedicated repeaters only</td></tr>
+          <tr><td>How traffic moves</td><td>Clients can rebroadcast. Solar routers on high sites carry the towns.</td><td>MeshCore keeps repeating only on dedicated repeaters</td></tr>
           <tr><td>Starting radio</td><td>Region US, LongFast, hop limit 3</td><td>A MeshCore USA/Canada preset will not hear us</td></tr>
-          <tr><td>Best at</td><td>Town check-ins, trails, outage notes, a planned Seneca–Walhalla backbone</td><td>A second mesh that cannot see this one</td></tr>
+          <tr><td>Best at</td><td>Town check-ins, trails, outage notes, a planned Seneca–Walhalla backbone</td><td>A separate mesh that cannot see this one</td></tr>
         </tbody>
       </table>
-      <p>Infrastructure is still the point: solar routers on purpose-chosen high spots, clients in pockets. A router role on a windowsill hurts the mesh. Details: <a href="meshtastic.html">Settings</a>.</p>
+      <p>Infrastructure still matters: solar routers on carefully chosen high spots, with clients in pockets. Putting a router role on a windowsill uses up hops without helping much. Details are on the <a href="meshtastic.html">Settings</a> page.</p>
       <h2>Radio plan</h2>
-      <p>Start on <strong>LongFast</strong>. It is the Meshtastic default and the usual public landing (frequency slot 20 if you set it explicitly). Hop limit stays at <strong>3</strong> until the Seneca / Walhalla / Poplar Springs routers are mapped. Faster presets are a later congestion tool, not the join setting.</p>
-      <div class="warn">Every node that wants to hear OconeeConnect must use Meshtastic, region US, and the same primary channel. Wrong firmware or wrong region = silence.</div>
+      <p>We start on <strong>LongFast</strong>. It’s the Meshtastic default and the usual public landing (frequency slot 20 if you set it explicitly). Hop limit stays at <strong>3</strong> until the Seneca / Walhalla / Poplar Springs routers are mapped and we see how the mesh behaves. Faster presets can come later if the network gets busy — they’re not the join setting.</p>
+      <div class="warn">Every node that wants to hear OconeeConnect needs Meshtastic, region US, and the same primary channel. Wrong firmware or wrong region means silence.</div>
       <p>Official docs: <a href="https://meshtastic.org/">meshtastic.org</a></p>
     </main>
     <footer class="foot wrap">
