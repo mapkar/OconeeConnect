@@ -35,27 +35,27 @@
     <main id="main" class="page wrap">
       <h1>Meshtastic settings</h1>
       <p class="lede">The radio plan for this county mesh</p>
-      <p>This is the OconeeConnect network, not a side firmware. Flash steps are on <a href="connect.html">Connect</a>. These are the numbers that make a node audible.</p>
+      <p>These are the settings that let your node hear (and be heard by) the rest of OconeeConnect. Flash steps are on the <a href="connect.html">Connect</a> page.</p>
       <div class="okbox">Region <strong>US</strong> · preset <strong>LongFast</strong> · frequency slot <strong>20</strong> · hop limit <strong>3</strong> · handheld role <strong>CLIENT</strong>.</div>
       <h2>How a message hops</h2>
       <ol>
         <li>Each person has a node.</li>
-        <li>Phone connects over Bluetooth.</li>
+        <li>Your phone connects over Bluetooth.</li>
         <li>A text goes out over 915 MHz LoRa.</li>
         <li>Nearby Meshtastic nodes on the same channel rebroadcast it, up to the hop limit.</li>
         <li>Location can ride along if the board has GPS and the channel allows it.</li>
       </ol>
       <h2>Channels</h2>
       <ul>
-        <li>Primary stays the public LongFast channel until a household QR is published. The default key is public. Do not put secrets on it.</li>
-        <li>Add a secondary channel with a private key for family or a route crew.</li>
-        <li>South Carolina Mesh publishes an optional secondary named SCMesh for the wider state map. Use their current join page at <a href="https://www.scmesh.us/">scmesh.us</a> if you want that. It is not required to hear a local Oconee node.</li>
-        <li>Do not rename the primary and leave the frequency slot at 0. The slot is hashed from the name. Set slot 20.</li>
+        <li>The primary channel stays the public LongFast channel until a household QR is published. The default key is public, so don’t put secrets on it.</li>
+        <li>You can add a secondary channel with a private key for family or a work crew.</li>
+        <li>South Carolina Mesh publishes an optional secondary named SCMesh for the wider state map. Check their current join page at <a href="https://www.scmesh.us/">scmesh.us</a> if you want that. It’s not required to hear local Oconee nodes.</li>
+        <li>Don’t rename the primary channel and leave the frequency slot at 0. The slot is derived from the name. Set it to 20 explicitly.</li>
       </ul>
       <h2>MQTT and position</h2>
-      <p>MQTT is optional and is not the mesh. If you uplink, leave encryption enabled and coarsen position. Map reports are unencrypted by design. A node in a drawer does not need a 10-meter map pin.</p>
+      <p>MQTT is optional and is not the mesh itself. If you uplink, leave encryption enabled and coarsen your position. Map reports are unencrypted by design. A node sitting in a drawer doesn’t need a precise map pin.</p>
       <h2>If you still have MeshCore on a board</h2>
-      <p>Reflash Meshtastic and erase first. MeshCore will not exchange messages with this mesh. Official docs: <a href="https://meshtastic.org/">meshtastic.org</a>.</p>
+      <p>Just reflash Meshtastic (and erase first). MeshCore won’t exchange messages with this mesh. Official docs: <a href="https://meshtastic.org/">meshtastic.org</a>.</p>
     </main>
     <footer class="foot wrap">
       <nav class="foot-nav" aria-label="Footer">
