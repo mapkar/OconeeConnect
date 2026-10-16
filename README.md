@@ -20,8 +20,8 @@ Public site (GitHub Pages): https://mapkar.github.io/OconeeConnect/
 | `support.html` | Host a site / grow coverage |
 | `site.css` / `site.js` | Shared chrome |
 
-Meshtastic is the network. Region US, LongFast, hop limit 3 unless a mapped backbone says otherwise. Infrastructure nodes are Meshtastic routers on purpose-chosen high sites, not every handheld.
+Meshtastic is the network. Region US, LongFast, frequency slot 20, hop limit 3 unless a mapped backbone says otherwise. Infrastructure nodes are Meshtastic routers on purpose-chosen high sites; handhelds stay CLIENT.
 
-MeshCore is not the plan. It uses the same boards and the 915 MHz band, and it does not exchange packets with Meshtastic. A node still on MeshCore has to be reflashed to join.
+MeshCore is not part of this mesh. It can run on the same boards and the same 915 MHz band, but the two firmwares do not exchange packets. If a node is still on MeshCore, just reflash it to Meshtastic to join.
 
 This repo is the public website only. Other code lives elsewhere.
