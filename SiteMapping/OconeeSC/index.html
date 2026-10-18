@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oconee County, SC – Meshtastic Site Mapping</title><style>body{font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:960px;margin:0 auto;padding:1.5rem;color:#1d2433;background:#fafbfc}
+h1{font-size:1.9rem;line-height:1.25;border-bottom:3px solid #2b7a4b;padding-bottom:.4rem}h2{margin-top:2.2rem;color:#2b7a4b}
+.callout{background:#e9f5ee;border-left:5px solid #2b7a4b;padding:1rem 1.2rem;border-radius:6px}
+.callout b{font-size:1.4rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem;margin:1rem 0}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.92rem;background:#fff}th,td{border:1px solid #d5dbe3;padding:.4rem .55rem;text-align:left}th{background:#eef2f6}
+img{max-width:100%;height:auto;border:1px solid #d5dbe3;border-radius:6px;background:#fff;margin-top:1rem}code{background:#eef2f6;padding:0 .25rem;border-radius:3px}a{color:#1f5fa8;word-break:break-all}footer{margin-top:3rem;font-size:.85rem;color:#667}</style></head><body><h1>Where would a handful of Meshtastic nodes cover Oconee County, SC, and how well?</h1>
+<p><em>A physics-and-public-data estimate, made Sep 29, 2026. All coverage numbers are <strong>model estimates</strong>, not measurements.</em></p>
+<div class="grid"><div class="callout"><b>~77%</b><br>of county area with 5 nodes</div><div class="callout"><b>~88%</b><br>of residents with 5 nodes</div><div class="callout"><b>47–99%</b><br>area range depending on tree-loss assumption</div><div class="callout"><b>~25 dB</b><br>terrain margin toward Paris Mtn / Greenville</div></div><h2>The short answer</h2>
+<ul>
+<li><strong>The best single site is the Chauga Ridge cluster just west of Walhalla</strong> (Buzzard Roost Mtn ~34.7662, -83.1374, 527 m, with Poor Mtn and Rich Mtn right next to it scoring almost the same). It isn't the highest ground. It wins because it sits on the edge of the Blue Ridge escarpment and looks straight down over the Piedmont, where most people live. With a 10 m mast, one node there reaches an estimated <strong>~41% of the county's area and ~55% of its people</strong> under the "realistic" assumptions below.</li>
+<li><strong>Five well-placed nodes get about 77% of the area and 88% of the population. Eight get about 85% and 91%</strong> (realistic case). After about 5 nodes, each extra node adds only a few percent. What's left uncovered is mostly deep coves and gorges: the Chattooga/Chauga valleys, the Jocassee gorges, and the NW corner.</li>
+<li><strong>The backbone isn't the problem.</strong> Every recommended node can reach every other node directly. The worst predicted node-to-node path loss is about 124 dB (5-node plan) or 132 dB (8-node plan), against a budget of about 151 dB after fade margin. The mesh has "diameter 1", so Meshtastic's default hop limit of 3 is plenty. The weak link is the last mile to a handheld under tree canopy.</li>
+<li><strong>Linking to Clemson and Greenville looks possible on terrain alone.</strong> Clemson is easy (about 102–111 dB). Paris Mountain (Greenville) comes in around 126 dB from Musterground Mtn or the Oakway-area water tower, and downtown Greenville around 127 dB from Persimmon or Burrells Mtn. That leaves roughly 25 dB of margin over bare terrain, but real trees along the paths will eat some of it.</li>
+</ul>
+<h2>Recommended sites (realistic scenario, greedy for area, each new node must link to the existing mesh)</h2>
+<div class="wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Site (name from OpenStreetMap)</th>
+<th>Lat, Lon</th>
+<th>Ground (m)</th>
+<th>Assumed antenna height</th>
+<th>Cumulative area</th>
+<th>Cumulative pop.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Buzzard Roost Mtn (Chauga Ridge, ~7.5 km W of Walhalla)</td>
+<td>34.7662, -83.1374</td>
+<td>527</td>
+<td>10 m mast</td>
+<td>40.7%</td>
+<td>55.1%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burrells Mtn (NW of Tamassee, near the NC line)</td>
+<td>34.9673, -83.0757</td>
+<td>915</td>
+<td>10 m mast</td>
+<td>54.8%</td>
+<td>64.2%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Unnamed OSM water tower, ~5 km S of South Union (Oakway area)</td>
+<td>34.6009, -83.0277</td>
+<td>299</td>
+<td>35 m (tank top)</td>
+<td>65.9%</td>
+<td>77.0%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Longnose Mtn (~9 km SW of Longcreek)</td>
+<td>34.7001, -83.2640</td>
+<td>533</td>
+<td>10 m mast</td>
+<td>73.1%</td>
+<td>79.1%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Unnamed OSM water tower, ~1.5 km from Utica (Seneca east side)</td>
+<td>34.6837, -82.9362</td>
+<td>291</td>
+<td>35 m</td>
+<td><strong>77.4%</strong></td>
+<td><strong>88.2%</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Smeltzer Mtn (~5.5 km from Salem)</td>
+<td>34.9373, -82.9685</td>
+<td>519</td>
+<td>10 m mast</td>
+<td>80.7%</td>
+<td>89.5%</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Long Creek Lookout Tower (fire tower)</td>
+<td>34.8051, -83.2379</td>
+<td>657</td>
+<td>20 m</td>
+<td>83.8%</td>
+<td>90.0%</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Hilltop near Chickasaw Point (automatic DEM pick)</td>
+<td>34.5286, -83.0592</td>
+<td>272</td>
+<td>10 m mast</td>
+<td><strong>85.3%</strong></td>
+<td><strong>91.4%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>If you optimize for people instead of area</strong>, the first pick becomes the <strong>Seneca-area water tower (34.6956, -82.9825)</strong>. On its own it reaches about 59% of residents but only 34% of the area. Eight population-optimized sites reach about 95% of residents and 82% of the area.</p>
+<p><strong>Good alternates</strong> (single-site realistic coverage): Poor Mtn or Rich Mtn (about 39–40%, same ridge as #1), <strong>Long Mountain Lookout Tower</strong> (34.8810, -83.0988; about 36%, a fire tower that could get an antenna above the trees), Stumphouse Mtn (about 33%), and Tamassee Knob (about 30%).</p>
+<h2>Surprising findings</h2>
+<ol>
+<li><strong>The highest peaks aren't the best sites for handhelds.</strong> On pure line-of-sight, the 900 m+ peaks near the NC line win (Burrells Mtn sees about 30% of the county). Once realistic losses are included, the 527 m escarpment edge above Walhalla wins, because it faces the populated Piedmont instead of looking into the gorges.</li>
+<li><strong>Lakes are not automatically well covered.</strong> From ridge-top nodes, only about 55% of the county's lake surface has clear line-of-sight, versus about 61% of land, because the lakes sit at the bottoms of valleys. What water does give you is great paths <em>along</em> the water and no canopy on a boat. With no foliage penalty on the water, 5 nodes cover about 96% of Keowee and nearly all of the Oconee arms of Hartwell. Jocassee, deep in its gorge, gets only about 58%.</li>
+<li><strong>A dock node mostly covers its own reach of the lake.</strong> A 4 m node on the Jocassee shore has line-of-sight to 65% of the water within 8 km but only 10% of the land. On dendritic (branching) Keowee, the test dock saw only about 3% of the water by strict line-of-sight, though about 58% was reachable by diffraction. Lakeside nodes are great for boaters on that arm and poor for general coverage.</li>
+<li><strong>The assumptions matter more than the site choice.</strong> For the same 5 sites, estimated area coverage runs from 53% (strict terrain line-of-sight) to 77% (realistic) to 99% (open ground, no trees). See the scenario map and sensitivity table below.</li>
+<li><strong>The single best line-of-sight site is just over the state line</strong>: a communications tower site on Round Mountain, NC (~35.028, -83.038, 1,126 m), at about 34% of the county vs 30% for the best in-county site. It's a commercial tower, so treat it as a curiosity.</li>
+</ol>
+<h2>Method</h2>
+<ol>
+<li><strong>Terrain:</strong> USGS 3DEP 1 arc-second DEM (bare earth), tiles n35w083, n35w084, n36w083 and n36w084 from the public <code>prd-tnm</code> S3 bucket. The tiles were mosaicked and resampled (averaged) to a 60 m UTM 17N grid. The Oconee County mask has 484,655 cells, about 1,745 km², matching the Census land + water area.</li>
+<li><strong>Boundary, population, water:</strong> Census TIGER/Line 2023 county boundary; 2020 Census blocks (TIGER <code>tabblock20</code>, <code>POP20</code>, total 78,607 people), with each block's population placed at its internal point; TIGER 2023 area-water for the lakes; TIGER places for labels.</li>
+<li><strong>Candidate sites (203 total, 183 inside the county, the rest within 1.5 km of the line):</strong></li>
+<li>102 from OSM (Overpass): 79 peaks, 5 fire/observation towers, 13 water towers, 5 communication towers.</li>
+<li>101 automatic local high points (the highest cell within a 2.4 km window).</li>
+<li>Assumed antenna heights: peaks 10 m, fire towers 20 m, water towers 35 m, comm towers 30 m.</li>
+<li>Peaks were snapped to the highest DEM cell within about 200 m.</li>
+<li>The recommended plan leaves out commercial comm towers and structures at the Oconee Nuclear Station site (the OSM "water tower" and "lookout" near Keowee Key), since a hobbyist realistically can't use them.</li>
+<li><strong>Propagation model:</strong> for every candidate × every county cell (a 1.5 m handheld receiver), the model computes:</li>
+<li>free-space path loss at 906.875 MHz (the US LongFast default slot);</li>
+<li>plus terrain diffraction loss using the <strong>Bullington equivalent-knife-edge method (ITU-R P.526)</strong>;</li>
+<li>earth curvature with k = 4/3 (effective earth radius 8,500 km);</li>
+<li>a sample about every 60 m along each path.
+   This handles Fresnel-zone obstruction on a sliding scale rather than as yes/no. "Line-of-sight" in this report means diffraction loss ≤ 6 dB, i.e. the direct ray clears the terrain.</li>
+<li><strong>Link budget:</strong> Meshtastic docs list LongFast (SF11 / 250 kHz / CR 4/5) at a <strong>153 dB link budget with 22 dBm and 0 dBi</strong>, which implies about <strong>-131 dBm sensitivity</strong>.</li>
+<li><strong>Node → handheld:</strong> 22 dBm + 5 dBi node antenna − 1 dB cable + 0 dBi handheld whip = <strong>157 dB</strong>.<ul>
+<li><em>Optimistic:</em> 10 dB fade margin, so path loss must be ≤ 147 dB.</li>
+<li><em>Realistic ("forest"):</em> 10 dB fade + <strong>20 dB foliage/body/clutter</strong> at the handheld, so ≤ 127 dB (≤ 137 dB on open water).</li>
+<li><em>Line-of-sight:</em> terrain viewshed only.</li>
+</ul>
+</li>
+<li><strong>Node ↔ node:</strong> 22 + 5 + 5 − 2 − (−131) = 161 dB, minus a 10 dB fade margin = <strong>151 dB</strong>. I also checked a 141 dB "masts stuck in the canopy" case; every link in the plan passes both.</li>
+<li><strong>Site selection:</strong> greedy maximum coverage (area-weighted or population-weighted), plus a "connected" variant where each new site must link to one already chosen. Greedy isn't guaranteed optimal but is usually within a few percent of it for problems like this.</li>
+</ol>
+<h3>Sensitivity (the recommended plan, area % / population %)</h3>
+<div class="wrap"><table>
+<thead>
+<tr>
+<th>Assumption for the handheld end</th>
+<th>1 node</th>
+<th>3 nodes</th>
+<th>5 nodes</th>
+<th>8 nodes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 dB canopy/clutter (dense summer forest, in a hollow)</td>
+<td>17/22</td>
+<td>36/41</td>
+<td>47/60</td>
+<td>59/65</td>
+</tr>
+<tr>
+<td>25 dB</td>
+<td>28/42</td>
+<td>52/64</td>
+<td>64/78</td>
+<td>74/82</td>
+</tr>
+<tr>
+<td><strong>20 dB (baseline "realistic")</strong></td>
+<td><strong>41/55</strong></td>
+<td><strong>66/77</strong></td>
+<td><strong>77/88</strong></td>
+<td><strong>85/91</strong></td>
+</tr>
+<tr>
+<td>20 dB but nodes at 30 dBm (1 W, near the legal ERP limit)</td>
+<td>64/78</td>
+<td>84/92</td>
+<td>92/99</td>
+<td>96/100</td>
+</tr>
+<tr>
+<td>10 dB (open fields, winter, handheld held high)</td>
+<td>70/83</td>
+<td>88/95</td>
+<td>94/99</td>
+<td>97/100</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Caveats (please read)</h2>
+<ul>
+<li><strong>Trees are the big unknown.</strong> The DEM is bare earth. Upstate SC is heavily forested with 20–30 m canopy, and 915 MHz loses a lot through wet leaves. A single flat "20 dB" penalty is a crude stand-in; real coverage will be patchy, worse in summer and better in winter.</li>
+<li>A 10 m mast on a forested summit may still be <em>inside</em> the canopy. Fire towers and water towers get above it, which is why they score well.</li>
+<li><strong>Access and permission:</strong> most of these summits are in Sumter National Forest, on state land, or private. Water towers belong to utilities, and fire towers to the state or USFS. None of these sites should be assumed available; check ownership and permits first.</li>
+<li><strong>Candidate data:</strong> OSM tower tags are incomplete and some water-tower points may be wrong or gone. Water-tower heights (35 m) and mast heights are assumptions.</li>
+<li><strong>Model limits:</strong></li>
+<li>The 60 m grid smooths sharp ridges.</li>
+<li>Bullington tends to be optimistic on multi-ridge paths and ignores buildings, ground reflections (two-ray fading over the lakes), interference and noise-floor variation.</li>
+<li>Meshtastic is also limited by airtime and collisions, not just link budget. A dense mesh where every router hears every other router can congest.</li>
+<li><strong>Handheld uplink:</strong> assumed symmetric (a 22 dBm handheld). Many handhelds have worse antennas than "0 dBi". A pocket or body can cost another 5–15 dB.</li>
+<li><strong>Legal:</strong> US 902–928 MHz, +30 dBm ERP max per Meshtastic's docs. 22 dBm + 5 dBi stays well inside that.</li>
+</ul>
+<h2>Ideas for next steps</h2>
+<ol>
+<li><strong>Add a canopy model:</strong> subtract 3DEP bare earth from a surface model (Copernicus GLO-30 DSM, or USGS lidar where available) to get tree height, then add per-cell foliage loss (e.g., ITU-R P.833 / P.2108) instead of a flat 20 dB.</li>
+<li><strong>Ground-truth it:</strong> drive or hike with a handheld logging RSSI/SNR (Meshtastic range-test module) from one temporary node near Walhalla, then calibrate the "clutter" number.</li>
+<li><strong>Check the public Meshtastic map</strong> for existing nodes around Clemson and Greenville; a Paris Mountain or Clemson router would make a regional mesh.</li>
+<li><strong>Try a MediumFast preset</strong> (148 dB budget, about 3× faster) to see how much coverage you give up for less congestion.</li>
+<li><strong>Run a proper optimizer</strong> (integer programming) and add practical constraints such as power, road access and permission likelihood.</li>
+</ol>
+<h2>Maps</h2>
+<p><img alt="Coverage with 5 recommended nodes" src="images/coverage_best5_forest.png" />
+<em>Five-node plan, realistic (20 dB clutter) scenario, with backbone links.</em></p>
+<p><img alt="Coverage with 3 nodes" src="images/coverage_best3_forest.png" />
+<em>Three-node plan.</em></p>
+<p><img alt="Coverage with 8 nodes" src="images/coverage_best8_forest.png" />
+<em>Eight-node plan.</em></p>
+<p><img alt="Coverage vs number of nodes" src="images/coverage_curve.png" />
+<em>Diminishing returns after about 5 nodes.</em></p>
+<p><img alt="Same 5 sites under three assumptions" src="images/scenarios_5sites.png" />
+<em>Line-of-sight vs realistic vs open ground: 53% / 77% / 99% area.</em></p>
+<p><img alt="Predicted signal from Buzzard Roost Mtn" src="images/signal_best_single_site.png" />
+<em>Predicted RSSI from the best single site.</em></p>
+<p><img alt="Regional links" src="images/regional_links.png" />
+<em>Links toward Clemson, Paris Mountain and Greenville.</em></p>
+<p><img alt="All candidate sites" src="images/candidates.png" />
+<em>All 203 candidate sites evaluated.</em></p>
+<h2>Data sources</h2>
+<ul>
+<li>USGS 3D Elevation Program 1 arc-second DEM (public domain): <a href="https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/current/">https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/current/</a></li>
+<li>US Census Bureau TIGER/Line 2020 blocks with 2020 population; 2023 county, area-water and places: <a href="https://www2.census.gov/geo/tiger/">https://www2.census.gov/geo/tiger/</a></li>
+<li>OpenStreetMap contributors (ODbL), via the Overpass API: peaks, towers, water towers.</li>
+<li>Meshtastic radio settings (presets, link budgets, US power limit): <a href="https://meshtastic.org/docs/overview/radio-settings/">https://meshtastic.org/docs/overview/radio-settings/</a></li>
+<li>ITU-R P.526 (Bullington diffraction method).</li>
+</ul><footer>Oconee Connect · Site Mapping · Model estimates only; verify with range tests and get landowner permission before installing anything.</footer></body></html>
