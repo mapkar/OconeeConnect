@@ -1,15 +1,15 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oconee County, SC – Meshtastic Site Mapping</title><style>body{font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:960px;margin:0 auto;padding:1.5rem;color:#1d2433;background:#fafbfc}
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oconee County, SC – MeshCore Site Mapping</title><style>body{font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:960px;margin:0 auto;padding:1.5rem;color:#1d2433;background:#fafbfc}
 h1{font-size:1.9rem;line-height:1.25;border-bottom:3px solid #2b7a4b;padding-bottom:.4rem}h2{margin-top:2.2rem;color:#2b7a4b}
 .callout{background:#e9f5ee;border-left:5px solid #2b7a4b;padding:1rem 1.2rem;border-radius:6px}
 .callout b{font-size:1.4rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem;margin:1rem 0}
 .wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.92rem;background:#fff}th,td{border:1px solid #d5dbe3;padding:.4rem .55rem;text-align:left}th{background:#eef2f6}
-img{max-width:100%;height:auto;border:1px solid #d5dbe3;border-radius:6px;background:#fff;margin-top:1rem}code{background:#eef2f6;padding:0 .25rem;border-radius:3px}a{color:#1f5fa8;word-break:break-all}footer{margin-top:3rem;font-size:.85rem;color:#667}</style></head><body><h1>Where would a handful of Meshtastic nodes cover Oconee County, SC, and how well?</h1>
-<p><em>A physics-and-public-data estimate, made Sep 29, 2026. All coverage numbers are <strong>model estimates</strong>, not measurements.</em></p>
+img{max-width:100%;height:auto;border:1px solid #d5dbe3;border-radius:6px;background:#fff;margin-top:1rem}code{background:#eef2f6;padding:0 .25rem;border-radius:3px}a{color:#1f5fa8;word-break:break-all}footer{margin-top:3rem;font-size:.85rem;color:#667}</style></head><body><h1>Where would a handful of MeshCore nodes cover Oconee County, SC, and how well?</h1>
+<p><em>A physics-and-public-data estimate, made Sep 29, 2026. All coverage numbers are <strong>model estimates</strong>, not measurements. Radio parameters follow the MeshCore USA/Canada preset (910.525 MHz, 62.5 kHz, SF7, CR5) where applicable; link budgets are approximate.</em></p>
 <div class="grid"><div class="callout"><b>~77%</b><br>of county area with 5 nodes</div><div class="callout"><b>~88%</b><br>of residents with 5 nodes</div><div class="callout"><b>47–99%</b><br>area range depending on tree-loss assumption</div><div class="callout"><b>~25 dB</b><br>terrain margin toward Paris Mtn / Greenville</div></div><h2>The short answer</h2>
 <ul>
 <li><strong>The best single site is the Chauga Ridge cluster just west of Walhalla</strong> (Buzzard Roost Mtn ~34.7662, -83.1374, 527 m, with Poor Mtn and Rich Mtn right next to it scoring almost the same). It isn't the highest ground. It wins because it sits on the edge of the Blue Ridge escarpment and looks straight down over the Piedmont, where most people live. With a 10 m mast, one node there reaches an estimated <strong>~41% of the county's area and ~55% of its people</strong> under the "realistic" assumptions below.</li>
 <li><strong>Five well-placed nodes get about 77% of the area and 88% of the population. Eight get about 85% and 91%</strong> (realistic case). After about 5 nodes, each extra node adds only a few percent. What's left uncovered is mostly deep coves and gorges: the Chattooga/Chauga valleys, the Jocassee gorges, and the NW corner.</li>
-<li><strong>The backbone isn't the problem.</strong> Every recommended node can reach every other node directly. The worst predicted node-to-node path loss is about 124 dB (5-node plan) or 132 dB (8-node plan), against a budget of about 151 dB after fade margin. The mesh has "diameter 1", so Meshtastic's default hop limit of 3 is plenty. The weak link is the last mile to a handheld under tree canopy.</li>
+<li><strong>The backbone isn't the problem.</strong> Every recommended node can reach every other node directly. The worst predicted node-to-node path loss is about 124 dB (5-node plan) or 132 dB (8-node plan), against a budget of about 151 dB after fade margin. MeshCore path limits are generous; the weak link is the last mile to a handheld under tree canopy.</li>
 <li><strong>Linking to Clemson and Greenville looks possible on terrain alone.</strong> Clemson is easy (about 102–111 dB). Paris Mountain (Greenville) comes in around 126 dB from Musterground Mtn or the Oakway-area water tower, and downtown Greenville around 127 dB from Persimmon or Burrells Mtn. That leaves roughly 25 dB of margin over bare terrain, but real trees along the paths will eat some of it.</li>
 </ul>
 <h2>Recommended sites (realistic scenario, greedy for area, each new node must link to the existing mesh)</h2>
@@ -121,19 +121,19 @@ img{max-width:100%;height:auto;border:1px solid #d5dbe3;border-radius:6px;backgr
 <li>Peaks were snapped to the highest DEM cell within about 200 m.</li>
 <li>The recommended plan leaves out commercial comm towers and structures at the Oconee Nuclear Station site (the OSM "water tower" and "lookout" near Keowee Key), since a hobbyist realistically can't use them.</li>
 <li><strong>Propagation model:</strong> for every candidate × every county cell (a 1.5 m handheld receiver), the model computes:</li>
-<li>free-space path loss at 906.875 MHz (the US LongFast default slot);</li>
+<li>free-space path loss at 910.525 MHz (MeshCore USA/Canada preset);</li>
 <li>plus terrain diffraction loss using the <strong>Bullington equivalent-knife-edge method (ITU-R P.526)</strong>;</li>
 <li>earth curvature with k = 4/3 (effective earth radius 8,500 km);</li>
 <li>a sample about every 60 m along each path.
    This handles Fresnel-zone obstruction on a sliding scale rather than as yes/no. "Line-of-sight" in this report means diffraction loss ≤ 6 dB, i.e. the direct ray clears the terrain.</li>
-<li><strong>Link budget:</strong> Meshtastic docs list LongFast (SF11 / 250 kHz / CR 4/5) at a <strong>153 dB link budget with 22 dBm and 0 dBi</strong>, which implies about <strong>-131 dBm sensitivity</strong>.</li>
-<li><strong>Node → handheld:</strong> 22 dBm + 5 dBi node antenna − 1 dB cable + 0 dBi handheld whip = <strong>157 dB</strong>.<ul>
+<li><strong>Link budget:</strong> Approximate for MeshCore USA/Canada (SF7 / 62.5 kHz / CR5) with 22 dBm and typical antennas. Sensitivity and margins are estimates; actual range varies.</li>
+<li><strong>Node → handheld:</strong> 22 dBm + 5 dBi node antenna − 1 dB cable + 0 dBi handheld whip ≈ <strong>157 dB</strong> baseline.<ul>
 <li><em>Optimistic:</em> 10 dB fade margin, so path loss must be ≤ 147 dB.</li>
 <li><em>Realistic ("forest"):</em> 10 dB fade + <strong>20 dB foliage/body/clutter</strong> at the handheld, so ≤ 127 dB (≤ 137 dB on open water).</li>
 <li><em>Line-of-sight:</em> terrain viewshed only.</li>
 </ul>
 </li>
-<li><strong>Node ↔ node:</strong> 22 + 5 + 5 − 2 − (−131) = 161 dB, minus a 10 dB fade margin = <strong>151 dB</strong>. I also checked a 141 dB "masts stuck in the canopy" case; every link in the plan passes both.</li>
+<li><strong>Node ↔ node:</strong> similar budget with higher gain antennas, minus fade margin.</li>
 <li><strong>Site selection:</strong> greedy maximum coverage (area-weighted or population-weighted), plus a "connected" variant where each new site must link to one already chosen. Greedy isn't guaranteed optimal but is usually within a few percent of it for problems like this.</li>
 </ol>
 <h3>Sensitivity (the recommended plan, area % / population %)</h3>
@@ -194,16 +194,16 @@ img{max-width:100%;height:auto;border:1px solid #d5dbe3;border-radius:6px;backgr
 <li><strong>Model limits:</strong></li>
 <li>The 60 m grid smooths sharp ridges.</li>
 <li>Bullington tends to be optimistic on multi-ridge paths and ignores buildings, ground reflections (two-ray fading over the lakes), interference and noise-floor variation.</li>
-<li>Meshtastic is also limited by airtime and collisions, not just link budget. A dense mesh where every router hears every other router can congest.</li>
+<li>MeshCore is limited by airtime and collisions in dense areas, not just link budget.</li>
 <li><strong>Handheld uplink:</strong> assumed symmetric (a 22 dBm handheld). Many handhelds have worse antennas than "0 dBi". A pocket or body can cost another 5–15 dB.</li>
-<li><strong>Legal:</strong> US 902–928 MHz, +30 dBm ERP max per Meshtastic's docs. 22 dBm + 5 dBi stays well inside that.</li>
+<li><strong>Legal:</strong> US 902–928 MHz, Part 15 limits. Stay within legal power.</li>
 </ul>
 <h2>Ideas for next steps</h2>
 <ol>
 <li><strong>Add a canopy model:</strong> subtract 3DEP bare earth from a surface model (Copernicus GLO-30 DSM, or USGS lidar where available) to get tree height, then add per-cell foliage loss (e.g., ITU-R P.833 / P.2108) instead of a flat 20 dB.</li>
-<li><strong>Ground-truth it:</strong> drive or hike with a handheld logging RSSI/SNR (Meshtastic range-test module) from one temporary node near Walhalla, then calibrate the "clutter" number.</li>
-<li><strong>Check the public Meshtastic map</strong> for existing nodes around Clemson and Greenville; a Paris Mountain or Clemson router would make a regional mesh.</li>
-<li><strong>Try a MediumFast preset</strong> (148 dB budget, about 3× faster) to see how much coverage you give up for less congestion.</li>
+<li><strong>Ground-truth it:</strong> drive or hike with a handheld logging RSSI/SNR from one temporary node near Walhalla, then calibrate the "clutter" number.</li>
+<li><strong>Check the public MeshCore map</strong> at map.meshcore.io for existing nodes around Clemson and Greenville; a Paris Mountain or Clemson repeater would make a regional mesh.</li>
+<li><strong>Verify with actual MeshCore hardware</strong> on the USA/Canada preset.</li>
 <li><strong>Run a proper optimizer</strong> (integer programming) and add practical constraints such as power, road access and permission likelihood.</li>
 </ol>
 <h2>Maps</h2>
@@ -228,6 +228,6 @@ img{max-width:100%;height:auto;border:1px solid #d5dbe3;border-radius:6px;backgr
 <li>USGS 3D Elevation Program 1 arc-second DEM (public domain): <a href="https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/current/">https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/current/</a></li>
 <li>US Census Bureau TIGER/Line 2020 blocks with 2020 population; 2023 county, area-water and places: <a href="https://www2.census.gov/geo/tiger/">https://www2.census.gov/geo/tiger/</a></li>
 <li>OpenStreetMap contributors (ODbL), via the Overpass API: peaks, towers, water towers.</li>
-<li>Meshtastic radio settings (presets, link budgets, US power limit): <a href="https://meshtastic.org/docs/overview/radio-settings/">https://meshtastic.org/docs/overview/radio-settings/</a></li>
+<li>MeshCore USA/Canada preset details: <a href="https://meshcore.io/">meshcore.io</a></li>
 <li>ITU-R P.526 (Bullington diffraction method).</li>
 </ul><footer>Oconee Connect · Site Mapping · Model estimates only; verify with range tests and get landowner permission before installing anything.</footer></body></html>
