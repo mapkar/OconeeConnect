@@ -25,7 +25,7 @@
           <a href="mesh.html">Mesh</a>
           <a href="radios.html">Radios</a>
           <a href="connect.html">Connect</a>
-          <a href="meshtastic.html">Settings</a>
+          <a href="settings.html">Settings</a>
           <a href="why.html">Why</a>
           <a href="area.html">Area</a>
           <a href="support.html">Support</a>
@@ -36,23 +36,23 @@
       <h1>Radios & repeaters</h1>
       <p class="lede">What to buy · what we mount</p>
       <div class="warn">Buy <strong>US 915 MHz</strong> hardware only. EU 868 MHz boards will not work here. Always attach the antenna before powering the radio.</div>
-      <h2>Handheld / client (start here)</h2>
-      <p>These talk to your phone and send your messages into the mesh. Typical cost $25–50. Keep the role set to <strong>CLIENT</strong>.</p>
+      <h2>Handheld / companion (start here)</h2>
+      <p>These talk to your phone and send your messages into the mesh. Typical cost $25–50. Flash <strong>Companion</strong> firmware.</p>
       <ul>
         <li><strong>Heltec V3 / V4 or Wireless Tracker</strong> — common, inexpensive, easy to flash.</li>
         <li><strong>LilyGO T-Beam or T-Deck</strong> — GPS on the T-Beam; screen and keys on the T-Deck.</li>
         <li><strong>Seeed Xiao / Wio Tracker / T1000-E</strong> — small boards, good for packs and pockets.</li>
       </ul>
       <p>Upgrade the stock antenna to a proper 915 MHz whip when you can. Hills are hard on weak antennas.</p>
-      <h2>Fixed routers (the backbone)</h2>
-      <p>County coverage comes from a few well-placed Meshtastic routers, not from every phone in a pocket. First-wave design:</p>
+      <h2>Fixed repeaters (the backbone)</h2>
+      <p>County coverage comes from a few well-placed MeshCore repeaters, not from every phone in a pocket. First-wave design:</p>
       <ul>
         <li>Base: <strong>RAK19003</strong> (WisBlock mini) class solar nodes.</li>
         <li>Omnidirectional 915 MHz antenna.</li>
         <li>Mounts that fit the site: magnet, pole clamp, or mast.</li>
         <li>Power: at least a <strong>3.7 V 5,000 mAh LiPo</strong> plus enough solar to keep it running through winter overcast.</li>
       </ul>
-      <p>Where a ready-made enclosure is easier (billboard, school pole, or a temporary flagpole), a packaged unit such as the <strong>Seeed SenseCAP Solar Node P1-class</strong> is the kind of box site owners can understand: small, solar, no grid drop. Flash Meshtastic on it. Don’t leave factory firmware if it isn’t Meshtastic.</p>
+      <p>Where a ready-made enclosure is easier (billboard, school pole, or a temporary flagpole), a packaged unit such as the <strong>Seeed SenseCAP Solar Node P1-class</strong> is the kind of box site owners can understand: small, solar, no grid drop. Flash MeshCore Repeater firmware on it.</p>
       <h2>What a good site looks like</h2>
       <ul>
         <li>Height and a reasonably clear view toward Seneca, Walhalla, or both.</li>
@@ -60,18 +60,17 @@
         <li>Access for a yearly battery or antenna check.</li>
         <li>No need for building power if the solar is realistic about shade.</li>
       </ul>
-      <h2>Roles on Meshtastic</h2>
+      <h2>Roles on MeshCore</h2>
       <table>
         <thead>
-          <tr><th>Role</th><th>Use</th></tr>
+          <tr><th>Firmware / role</th><th>Use</th></tr>
         </thead>
         <tbody>
-          <tr><td>CLIENT</td><td>Personal radio. Rebroadcasts. This is the default and the right role for a pocket or handheld.</td></tr>
-          <tr><td>CLIENT_MUTE</td><td>Hears and sends, but does not rebroadcast. Useful if a dense cluster is already well covered.</td></tr>
-          <tr><td>ROUTER</td><td>Fixed high site only, agreed with the backbone plan. A router sitting in a window uses hops without helping much.</td></tr>
+          <tr><td>Companion</td><td>Personal radio. Sends and receives. Does not rebroadcast. This is the right choice for a pocket or handheld.</td></tr>
+          <tr><td>Repeater</td><td>Fixed high site only, agreed with the backbone plan. Extends the mesh for everyone else.</td></tr>
         </tbody>
       </table>
-      <p>Flash from Chrome or Edge: <a href="https://flasher.meshtastic.org/">flasher.meshtastic.org</a>. The same board can run MeshCore instead — but only one firmware at a time, and only Meshtastic joins this mesh. See <a href="connect.html">How to connect</a>.</p>
+      <p>Flash from Chrome or Edge: <a href="https://flasher.meshcore.io/">flasher.meshcore.io</a>. The same board can run Meshtastic instead — but only one firmware at a time, and only MeshCore joins this mesh. See <a href="connect.html">How to connect</a>.</p>
     </main>
     <footer class="foot wrap">
       <nav class="foot-nav" aria-label="Footer">
@@ -81,7 +80,7 @@
         <a href="mesh.html">Mesh</a>
         <a href="radios.html">Radios</a>
         <a href="connect.html">Connect</a>
-        <a href="meshtastic.html">Settings</a>
+        <a href="settings.html">Settings</a>
         <a href="why.html">Why</a>
         <a href="area.html">Area</a>
         <a href="support.html">Support</a>
